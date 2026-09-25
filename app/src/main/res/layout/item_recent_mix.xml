@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home "Bản mix gần đây" row (App:86-93): 56 tall, circle 40 play/pause, name 14, duration Chakra 500 14 muted. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_recent_height"
+    android:background="@drawable/sel_transparent_r12"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/frame_play"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/sel_circle_panel">
+
+        <ImageView
+            android:id="@+id/image_play"
+            android:layout_width="@dimen/icon_16"
+            android:layout_height="@dimen/icon_16"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_play"
+            app:tint="@color/md_text" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_name"
+        android:textAlignment="viewStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MixDeck.Body"
+        tools:text="Mix 25-09 21:40" />
+
+    <TextView
+        android:id="@+id/text_duration"
+        android:textDirection="ltr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Time"
+        tools:text="03:12" />
+</LinearLayout>

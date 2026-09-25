@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mini player content (App:227-234), inflated into MiniPlayerView (64dp, panel, padding 0 16, gap 12). -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/button_stop"
+        android:layout_width="@dimen/touch_min"
+        android:layout_height="@dimen/touch_min"
+        android:background="@drawable/bg_circle_text"
+        android:contentDescription="@string/player_pause"
+        android:padding="13dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_pause"
+        app:tint="@color/md_booth" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:textAlignment="viewStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MixDeck.Body.Medium"
+        tools:text="Mix 25-09 21:40" />
+
+    <TextView
+        android:id="@+id/text_time"
+        android:textDirection="ltr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Time"
+        tools:text="01:17 / 03:12" />
+</merge>

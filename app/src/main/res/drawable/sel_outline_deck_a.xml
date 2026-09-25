@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Load-to-deck button (Mixer:353-354): 1.5 border in deck colour, r12; pressed fills with the deck colour. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_deck_a_33" />
+            <corners android:radius="@dimen/radius_12" />
+            <stroke android:width="@dimen/stroke_1_5" android:color="@color/md_deck_a" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <corners android:radius="@dimen/radius_12" />
+            <stroke android:width="@dimen/stroke_1_5" android:color="@color/md_deck_a" />
+        </shape>
+    </item>
+</selector>

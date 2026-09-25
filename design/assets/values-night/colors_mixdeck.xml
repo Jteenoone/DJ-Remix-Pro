@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MixDeck tokens, DARK theme (values-night/). Source: THEMES.dark in App.dc.html:272 and Mixer.dc.html:392.
+  Default theme of the app is dark (prop theme default 'dark'). Fixed colors, scrims and covers are only in values/.
+-->
+<resources>
+    <color name="md_booth">#FF1C1726</color>
+    <color name="md_panel">#FF282133</color>
+    <color name="md_raised">#FF362D44</color>
+    <color name="md_line">#FF3E3550</color>
+    <color name="md_line2">#FF4B4160</color>
+    <color name="md_grid">#FF2A2335</color>
+    <color name="md_dim">#80282133</color>        <!-- rgba(40,33,51,.5) -->
+    <color name="md_text">#FFF4EFF9</color>
+    <color name="md_muted">#FFA89EB8</color>
+    <color name="md_inv_muted">#FF4A4158</color>
+    <color name="md_inv_dim">#FFC9C1D4</color>
+    <color name="md_deck_a">#FFFFB547</color>
+    <color name="md_deck_b">#FF45D4C4</color>
+    <color name="md_rec">#FFFF4F61</color>
+    <color name="md_deck_a_12">#1FFFB547</color>
+    <color name="md_deck_a_18">#2EFFB547</color>
+    <color name="md_deck_a_20">#33FFB547</color>
+    <color name="md_deck_a_33">#54FFB547</color>
+    <color name="md_deck_a_55">#8CFFB547</color>
+    <color name="md_deck_a_60">#99FFB547</color>
+    <color name="md_deck_b_12">#1F45D4C4</color>
+    <color name="md_deck_b_18">#2E45D4C4</color>
+    <color name="md_deck_b_33">#5445D4C4</color>
+    <color name="md_deck_b_55">#8C45D4C4</color>
+    <color name="md_text_12">#1FF4EFF9</color>
+</resources>

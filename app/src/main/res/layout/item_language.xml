@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Language row (App:217-222): min 60, padding 8/4, bottom line; native name 16/22 500, Vietnamese name, radio 22. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sel_row_line"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/row_language_min_height"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/space_4"
+    android:paddingTop="@dimen/space_8"
+    android:paddingEnd="@dimen/space_4"
+    android:paddingBottom="@dimen/space_8">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_native"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.MixDeck.Subheading.Medium"
+            android:textDirection="firstStrong"
+            tools:text="Tiếng Việt" />
+
+        <TextView
+            android:id="@+id/text_vietnamese"
+            android:textAlignment="viewStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+            tools:text="Tiếng Việt" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_radio"
+        android:layout_width="@dimen/radio_size"
+        android:layout_height="@dimen/radio_size"
+        android:layout_marginStart="@dimen/space_12"
+        android:background="@drawable/bg_radio_off"
+        android:importantForAccessibility="no" />
+</LinearLayout>

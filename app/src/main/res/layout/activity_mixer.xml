@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  S10 Mixer, landscape 800 x 360 (Mixer:23-360). Always ltr (D-11): Deck A left, Deck B right.
+  Top bar 72 (padding 7/6, gap 6): back · REC 104 · waveform frame · quick settings.
+  Body (top 72, inset 4, gap 4): deck A 280 · mixer column (flex) · deck B 280. Overlays on top.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_booth"
+    android:layoutDirection="ltr">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Top bar. clipToPadding off: the "Đang ghi bản mix" descenders may draw into the 7dp bottom padding. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mixer_top_bar_height"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space_6"
+            android:paddingTop="7dp"
+            android:paddingEnd="@dimen/space_6"
+            android:paddingBottom="7dp">
+
+            <ImageButton
+                android:id="@+id/button_back"
+                android:layout_width="@dimen/touch_min"
+                android:layout_height="match_parent"
+                android:background="@drawable/sel_transparent_r12"
+                android:contentDescription="@string/action_back"
+                android:padding="10dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_back"
+                app:tint="@color/md_muted" />
+
+            <!-- REC 44 + caption 12/14 = 58 (Mixer:29-36); the caption's glyph box is taller than 14, so it may overflow. -->
+            <LinearLayout
+                android:layout_width="@dimen/mixer_rec_width"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/space_6"
+                android:clipChildren="false"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/button_rec"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/touch_min"
+                    android:background="@drawable/bg_rec_idle"
+                    android:clickable="true"
+                    android:contentDescription="@string/mixer_rec_start_cd"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/view_rec_dot"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/shape_rec_dot_idle" />
+
+                    <TextView
+                        android:id="@+id/text_rec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_8"
+                        android:importantForAccessibility="no"
+                        android:text="@string/mixer_rec"
+                        android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Rec" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_recording"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/mixer_recording"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+                    android:textColor="@color/md_rec"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Waveform frame: 2 lanes 18 (gap 3), dim half, playhead, overview bars 8. -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frame_waveform"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/space_6"
+                android:layout_weight="1"
+                android:background="@drawable/bg_panel_r10">
+
+                <com.example.djremixpro.core.ui.widget.ScrollingWaveformView
+                    android:id="@+id/wave_a"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/waveform_lane_height"
+                    android:layout_marginTop="@dimen/space_4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mdDeck="a" />
+
+                <com.example.djremixpro.core.ui.widget.ScrollingWaveformView
+                    android:id="@+id/wave_b"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/waveform_lane_height"
+                    android:layout_marginTop="@dimen/space_3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/wave_a"
+                    app:mdDeck="b" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <View
+                    android:id="@+id/view_dim"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:background="@color/md_dim"
+                    app:layout_constraintEnd_toStartOf="@id/guide_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_playhead"
+                    android:layout_width="2dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="@dimen/space_2"
+                    android:background="@drawable/bg_playhead"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="16dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/space_6"
+                    android:paddingEnd="@dimen/space_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.example.djremixpro.core.ui.widget.OverviewBarView
+                        android:id="@+id/overview_a"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:mdBarHeight="@dimen/overview_height"
+                        app:mdDeck="a" />
+
+                    <com.example.djremixpro.core.ui.widget.OverviewBarView
+                        android:id="@+id/overview_b"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/space_10"
+                        android:layout_weight="1"
+                        app:mdBarHeight="@dimen/overview_height"
+                        app:mdDeck="b" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageButton
+                android:id="@+id/button_quick_settings"
+                android:layout_width="@dimen/touch_min"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/space_6"
+                android:background="@drawable/sel_transparent_r12"
+                android:contentDescription="@string/mixer_quick_settings_cd"
+                android:padding="10dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_tune"
+                app:tint="@color/md_muted" />
+        </LinearLayout>
+
+        <!-- Body -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/mixer_gap"
+            android:paddingEnd="@dimen/mixer_gap"
+            android:paddingBottom="@dimen/mixer_gap">
+
+            <include
+                android:id="@+id/deck_a"
+                layout="@layout/include_deck"
+                android:layout_width="@dimen/mixer_deck_width"
+                android:layout_height="match_parent" />
+
+            <include
+                android:id="@+id/center"
+                layout="@layout/include_mixer_center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/mixer_gap"
+                android:layout_marginEnd="@dimen/mixer_gap"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/deck_b"
+                layout="@layout/include_deck"
+                android:layout_width="@dimen/mixer_deck_width"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/library_panel"
+        layout="@layout/view_library_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/fx_sheet"
+        layout="@layout/sheet_fx"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/save_dialog"
+        layout="@layout/dialog_save_mix"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/coach"
+        layout="@layout/view_coach"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- Toast under the 72dp top bar, centred, so it never covers the transport row (V09). -->
+    <com.example.djremixpro.core.ui.widget.ToastView
+        android:id="@+id/toast"
+        android:layout_width="440dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="76dp"
+        tools:visibility="visible" />
+</FrameLayout>

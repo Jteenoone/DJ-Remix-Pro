@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Format segment (Mixer:278): selected = text background; otherwise raised. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_text" />
+            <corners android:radius="@dimen/radius_10" />
+        </shape>
+    </item>
+    <item>
+        <ripple android:color="@color/md_line2">
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/md_raised" />
+                    <corners android:radius="@dimen/radius_10" />
+                </shape>
+            </item>
+        </ripple>
+    </item>
+</selector>

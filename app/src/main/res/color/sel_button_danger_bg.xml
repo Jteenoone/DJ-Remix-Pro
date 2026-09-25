@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Destructive primary button ("Xoá", MixDeck:700): rec; disabled = raised. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/md_raised" android:state_enabled="false" />
+    <item android:color="@color/md_rec" />
+</selector>

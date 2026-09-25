@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lesson row (App:154-162): 60 tall r12 (panel when current), number circle 32, title 14/500, steps, "Bắt đầu" chip. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_lesson_height"
+    android:layout_marginBottom="@dimen/space_2"
+    android:background="@drawable/sel_transparent_r12"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/space_12"
+    android:paddingEnd="@dimen/space_12">
+
+    <FrameLayout
+        android:id="@+id/frame_number"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/bg_lesson_todo">
+
+        <TextView
+            android:id="@+id/text_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Bold"
+            android:textColor="@color/md_muted"
+            tools:text="3" />
+
+        <ImageView
+            android:id="@+id/image_done"
+            android:layout_width="@dimen/icon_16"
+            android:layout_height="@dimen/icon_16"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_check"
+            android:visibility="gone"
+            app:tint="@color/md_muted" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:textAlignment="viewStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MixDeck.Body.Medium"
+            tools:text="Chuyển bài bằng crossfader" />
+
+        <TextView
+            android:id="@+id/text_steps"
+            android:textAlignment="viewStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+            tools:text="4 bước" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_start"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/space_12"
+        android:background="@drawable/bg_text_r10"
+        android:gravity="center"
+        android:importantForAccessibility="no"
+        android:paddingStart="@dimen/space_12"
+        android:paddingEnd="@dimen/space_12"
+        android:text="@string/learn_start"
+        android:textAppearance="@style/TextAppearance.MixDeck.Caption.Semibold"
+        android:textColor="@color/md_booth"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</LinearLayout>

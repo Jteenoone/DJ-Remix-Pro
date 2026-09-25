@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Recording row (App:126-131): 72 tall, r12, panel while playing; thumbnail 56x44 with mini waveform; menu 44. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_row"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_recording_height"
+    android:layout_marginBottom="@dimen/space_2"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/button_play"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/sel_transparent_r12"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/space_8"
+        android:paddingEnd="0dp">
+
+        <FrameLayout
+            android:layout_width="56dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_panel_r8">
+
+            <com.example.djremixpro.core.ui.widget.MiniWaveformView
+                android:id="@+id/wave"
+                android:layout_width="56dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_12"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:textAlignment="viewStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.MixDeck.Body.Medium"
+                tools:text="Mix 25-09 21:40" />
+
+            <TextView
+                android:id="@+id/text_meta"
+                android:textAlignment="viewStart"
+                android:textDirection="ltr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+                tools:text="03:12 · 25/09/2026" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/button_menu"
+        android:layout_width="@dimen/touch_min"
+        android:layout_height="@dimen/touch_min"
+        android:layout_marginStart="@dimen/space_12"
+        android:background="@drawable/sel_transparent_r12"
+        android:contentDescription="@string/recording_menu_cd"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_more_vert"
+        app:tint="@color/md_muted" />
+</LinearLayout>

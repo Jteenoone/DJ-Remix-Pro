@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MixDeck tokens, LIGHT theme (values/). Source: THEMES.light in App.dc.html:273 and Mixer.dc.html:393.
+  Dark theme lives in values-night/colors_mixdeck.xml (THEMES.dark). Same names in both files.
+  Alpha variants approximate CSS color-mix(in srgb, X N%, transparent) as #AARRGGBB.
+-->
+<resources>
+    <!-- Surfaces -->
+    <color name="md_booth">#FFEEEAF4</color>      <!-- CSS var booth: nền màn hình -->
+    <color name="md_panel">#FFFBFAFD</color>      <!-- CSS var panel: card, bottom nav, sheet -->
+    <color name="md_raised">#FFE2DCEB</color>     <!-- CSS var raised: phần tử nổi, tab đang chọn, toast -->
+    <color name="md_line">#FFD2CADD</color>       <!-- CSS var line: đường kẻ, track -->
+    <color name="md_line2">#FFB9AECA</color>      <!-- CSS var line2: viền knob/fader, viền switch tắt -->
+    <color name="md_grid">#FFE6E0EE</color>       <!-- CSS var grid: lưới XY pad -->
+    <color name="md_dim">#8CFBFAFD</color>        <!-- CSS var dim rgba(251,250,253,.55): che phần waveform đã phát -->
+    <!-- Content -->
+    <color name="md_text">#FF1F1829</color>       <!-- CSS var text -->
+    <color name="md_muted">#FF5E5475</color>      <!-- CSS var muted -->
+    <color name="md_inv_muted">#FFC4BAD3</color>  <!-- CSS var inv-muted: chữ phụ trên bong bóng coach (nền màu text) -->
+    <color name="md_inv_dim">#FF5E5475</color>    <!-- CSS var inv-dim: chấm bước chưa tới trên coach -->
+    <!-- Accents -->
+    <color name="md_deck_a">#FFA35F00</color>     <!-- CSS var a: Deck A (hổ phách) -->
+    <color name="md_deck_b">#FF08786D</color>     <!-- CSS var b: Deck B (ngọc) -->
+    <color name="md_rec">#FFC8243A</color>        <!-- CSS var rec: ghi âm, kill, xoá, lỗi -->
+    <!-- Deck accent alpha variants (color-mix %) -->
+    <color name="md_deck_a_12">#1FA35F00</color>  <!-- nền Sync bật -->
+    <color name="md_deck_a_18">#2EA35F00</color>  <!-- nền pad bật -->
+    <color name="md_deck_a_20">#33A35F00</color>  <!-- vùng loop trên waveform -->
+    <color name="md_deck_a_33">#54A35F00</color>  <!-- vòng chạm jog -->
+    <color name="md_deck_a_55">#8CA35F00</color>  <!-- nửa trái track crossfader -->
+    <color name="md_deck_a_60">#99A35F00</color>  <!-- crosshair XY pad -->
+    <color name="md_deck_b_12">#1F08786D</color>
+    <color name="md_deck_b_18">#2E08786D</color>
+    <color name="md_deck_b_33">#5408786D</color>
+    <color name="md_deck_b_55">#8C08786D</color>
+    <color name="md_text_12">#1F1F1829</color>    <!-- nền pad sampler bật (màu trung tính) -->
+
+    <!-- Fixed colors hard-coded in the prototype (NOT theme-aware, same in light & dark) -->
+    <color name="md_fixed_vinyl_groove_1">#FF1E1828</color> <!-- repeating-radial-gradient 0-2px -->
+    <color name="md_fixed_vinyl_groove_2">#FF272031</color> <!-- 2-3px -->
+    <color name="md_fixed_jog_bg">#FF211B2B</color>
+    <color name="md_fixed_label_a">#FF3A2C1E</color>        <!-- nhãn giữa đĩa Deck A -->
+    <color name="md_fixed_label_b">#FF1B3432</color>        <!-- nhãn giữa đĩa Deck B -->
+    <color name="md_fixed_vinyl_a">#FFFFB547</color>        <!-- viền/chữ nhãn đĩa A -->
+    <color name="md_fixed_vinyl_b">#FF45D4C4</color>        <!-- viền/chữ nhãn đĩa B -->
+    <!-- Scrims -->
+    <color name="md_scrim_sheet">#A8141019</color>    <!-- App bottom sheet rgba(20,16,25,.66) -->
+    <color name="md_scrim_fx">#991C1726</color>       <!-- Mixer FX sheet rgba(28,23,38,.6) -->
+    <color name="md_scrim_dialog">#B31C1726</color>   <!-- Mixer save dialog rgba(28,23,38,.7) -->
+    <color name="md_scrim_panel">#8C1C1726</color>    <!-- Mixer library panel rgba(28,23,38,.55) -->
+    <color name="md_scrim_coach">#C7141019</color>    <!-- Coach spotlight rgba(20,16,25,.78) -->
+    <!-- Song cover placeholders (App.dc.html:309, Mixer.dc.html:372) -->
+    <color name="md_cover_1">#FF3B5E4A</color>
+    <color name="md_cover_2">#FF4A4A5E</color>
+    <color name="md_cover_3">#FF4A3B5E</color>
+    <color name="md_cover_4">#FF5E4A3B</color>
+    <color name="md_cover_5">#FF3B4A5E</color>
+    <color name="md_cover_6">#FF5E3B4A</color>
+    <color name="md_cover_7">#FF2E4E4A</color>
+    <color name="md_cover_8">#FF4E452E</color>
+    <color name="md_cover_9">#FF5E3B3B</color>
+    <color name="md_cover_10">#FF3B3B5E</color>
+</resources>

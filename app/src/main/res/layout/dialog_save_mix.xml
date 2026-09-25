@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- O7 Save mix dialog (Mixer:266-295, D-12): scrim 70 %, card 400 wide, r20, padding 20, gap 14. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_scrim_dialog"
+    android:clickable="true"
+    android:focusable="false"
+    tools:ignore="UselessParent">
+
+    <ScrollView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_panel_line_r20"
+            android:orientation="vertical"
+            android:padding="@dimen/space_20">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:accessibilityHeading="true"
+                    android:text="@string/save_title"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Heading" />
+
+                <TextView
+                    android:id="@+id/text_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Time"
+                    tools:text="03:42" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_14"
+                android:labelFor="@id/edit_name"
+                android:text="@string/save_name_label"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_min"
+                android:layout_marginTop="@dimen/space_4"
+                android:background="@drawable/bg_booth_input"
+                android:imeOptions="actionDone|flagNoExtractUi|flagNoFullscreen"
+                android:importantForAutofill="no"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:paddingStart="@dimen/space_12"
+                android:paddingEnd="@dimen/space_12"
+                android:textAppearance="@style/TextAppearance.MixDeck.Body"
+                android:textCursorDrawable="@null"
+                tools:text="Mix 25-09 21:40" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_14"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save_format_label"
+                        android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_4"
+                        android:background="@drawable/bg_booth_r12"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/space_2">
+
+                        <TextView
+                            android:id="@+id/button_mp3"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_segment_text_r10"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:text="@string/format_mp3"
+                            android:textAppearance="@style/TextAppearance.MixDeck.Button"
+                            android:textColor="@color/sel_segment_booth_text" />
+
+                        <TextView
+                            android:id="@+id/button_wav"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="@dimen/space_4"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_segment_text_r10"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:text="@string/format_wav"
+                            android:textAppearance="@style/TextAppearance.MixDeck.Button"
+                            android:textColor="@color/sel_segment_booth_text" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="132dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_12"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save_quality_label"
+                        android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/touch_min"
+                        android:layout_marginTop="@dimen/space_4"
+                        android:background="@drawable/bg_raised_r12"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/space_12"
+                        android:paddingEnd="@dimen/space_12">
+
+                        <TextView
+                            android:id="@+id/text_quality"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.MixDeck.Body"
+                            tools:text="320 kbps" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_down"
+                            app:tint="@color/md_muted" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_wav_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_14"
+                android:text="@string/save_wav_note"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/space_14"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_discard"
+                    style="@style/Widget.MixDeck.Button.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_dialog_height"
+                    android:paddingStart="@dimen/space_16"
+                    android:paddingEnd="@dimen/space_16"
+                    android:text="@string/save_discard"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Button"
+                    android:textColor="@color/md_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_save"
+                    style="@style/Widget.MixDeck.Button.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_dialog_height"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:minHeight="@dimen/button_dialog_height"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="@string/save_confirm" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

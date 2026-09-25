@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Chakra+Petch:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#141019;font-family:'Be Vietnam Pro',sans-serif}
+a{color:#FFB547}a:hover{color:#F4EFF9}
+button{font-family:inherit;padding:0}
+@keyframes md-spin{to{transform:rotate(360deg)}}
+@keyframes md-blink{0%,49%{opacity:1}50%,100%{opacity:.25}}
+@keyframes md-shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){[data-strobe]{animation:none!important}}
+</style>
+</helmet>
+
+<section id="t4" style="padding:40px 44px 48px;color:#F4EFF9;background:#141019;width:max-content;min-width:100%;box-sizing:border-box;border-bottom:1px solid #2E2639">
+  <div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+    <a href="#t4" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#F4EFF9;color:#1C1726;border-radius:4px;text-decoration:none">4</a>
+    <span style="font:600 24px/30px 'Chakra Petch',sans-serif">MixDeck · Chế độ sáng, Cài đặt và ngôn ngữ</span>
+  </div>
+  <p style="margin:0 0 28px;max-width:760px;font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">Đã bỏ Premium: 8 hot cue, toàn bộ FX, sampler và ghi WAV đều miễn phí. Ở 4e, đổi Tối / Sáng / Theo hệ thống thì giao diện đổi ngay; chạm Ngôn ngữ để mở danh sách 17 ngôn ngữ (4f).</p>
+  <div style="display:flex;gap:32px;align-items:flex-start;margin-bottom:32px">
+    <div id="4a" style="display:flex;flex-direction:column;gap:10px;width:800px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#4a" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">4a</a>Mixer · sáng, đang mix</div>
+      <div style="width:800px;height:360px;outline:1px solid #2E2639;border-radius:14px;overflow:hidden"><dc-import name="Mixer" variant="play" theme="light" hint-size="800px,360px"></dc-import></div>
+    </div>
+    <div id="4b" style="display:flex;flex-direction:column;gap:10px;width:800px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#4b" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">4b</a>Mixer · sáng, chế độ Pad và đang ghi</div>
+      <div style="width:800px;height:360px;outline:1px solid #2E2639;border-radius:14px;overflow:hidden"><dc-import name="Mixer" variant="pad" theme="light" hint-size="800px,360px"></dc-import></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:32px;align-items:flex-start">
+    <div id="4c" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#4c" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">4c</a>Trang chủ · sáng</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px;overflow:hidden"><dc-import name="App" theme="light" hint-size="360px,800px"></dc-import></div>
+    </div>
+    <div id="4d" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#4d" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">4d</a>Thư viện · sáng</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px;overflow:hidden"><dc-import name="App" theme="light" start-tab="lib" hint-size="360px,800px"></dc-import></div>
+    </div>
+    <div id="4e" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#4e" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">4e</a>Cài đặt · có chọn giao diện</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px;overflow:hidden"><dc-import name="App" start-tab="settings" hint-size="360px,800px"></dc-import></div>
+    </div>
+    <div id="4f" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#4f" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">4f</a>Chọn ngôn ngữ · sáng</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px;overflow:hidden"><dc-import name="App" theme="light" start-tab="lang" hint-size="360px,800px"></dc-import></div>
+    </div>
+  </div>
+</section>
+
+<section id="t3" style="padding:40px 44px 48px;color:#F4EFF9;background:#141019;width:max-content;min-width:100%;box-sizing:border-box;border-bottom:1px solid #2E2639">
+  <div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+    <a href="#t3" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#F4EFF9;color:#1C1726;border-radius:4px;text-decoration:none">3</a>
+    <span style="font:600 24px/30px 'Chakra Petch',sans-serif">MixDeck · Trang chủ và các tab (bấm được)</span>
+  </div>
+  <p style="margin:0 0 28px;max-width:760px;font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">Thanh điều hướng dưới chuyển được giữa 4 tab, các trang cuộn được. Thử: chạm bài trong Thư viện để mở sheet nạp deck, đổi sắp xếp, nghe bản mix gần đây, mở tab Mẹo. "Vào bàn DJ" mở Mixer.</p>
+  <div style="display:flex;gap:32px;align-items:flex-start">
+    <div id="3a" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#3a" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">3a</a>Trang chủ · có phiên trước, có quảng cáo</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px"><dc-import name="App" user="returning" hint-size="360px,800px"></dc-import></div>
+    </div>
+    <div id="3b" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#3b" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">3b</a>Trang chủ · người mới</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px"><dc-import name="App" user="new" hint-size="360px,800px"></dc-import></div>
+    </div>
+    <div id="3c" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#3c" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">3c</a>Thư viện</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px"><dc-import name="App" start-tab="lib" hint-size="360px,800px"></dc-import></div>
+    </div>
+    <div id="3d" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#3d" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">3d</a>Học DJ</div>
+      <div style="width:360px;height:800px;outline:1px solid #2E2639;border-radius:20px"><dc-import name="App" start-tab="learn" hint-size="360px,800px"></dc-import></div>
+    </div>
+  </div>
+</section>
+
+<section id="t2" style="padding:40px 44px 48px;color:#F4EFF9;background:#141019;width:max-content;min-width:100%;box-sizing:border-box;border-bottom:1px solid #2E2639">
+  <div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+    <a href="#t2" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#F4EFF9;color:#1C1726;border-radius:4px;text-decoration:none">2</a>
+    <span style="font:600 24px/30px 'Chakra Petch',sans-serif">MixDeck · Sheet trên mixer và các màn dọc</span>
+  </div>
+  <p style="margin:0 0 28px;max-width:760px;font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">XY pad trong 2a kéo được. 2b đổi được MP3/WAV. Ở 2c, chạm Sync của Deck B để sang bước tiếp theo của hướng dẫn. Các màn dọc 360 × 800 dp là bản tĩnh.</p>
+
+  <div style="display:flex;gap:32px;align-items:flex-start">
+    <div id="2a" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2a" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2a</a>Bảng chỉnh FX chi tiết (nhấn giữ pad Echo)</div>
+      <div style="width:800px;height:360px;border-radius:14px;overflow:hidden;border:1px solid #2E2639"><dc-import name="Mixer" variant="fx" hint-size="800px,360px"></dc-import></div>
+    </div>
+    <div id="2b" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2b" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2b</a>Hộp thoại lưu sau khi dừng ghi</div>
+      <div style="width:800px;height:360px;border-radius:14px;overflow:hidden;border:1px solid #2E2639"><dc-import name="Mixer" variant="save" hint-size="800px,360px"></dc-import></div>
+    </div>
+    <div id="2c" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2c" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2c</a>Hướng dẫn tương tác, bước Sync</div>
+      <div style="width:800px;height:360px;border-radius:14px;overflow:hidden;border:1px solid #2E2639"><dc-import name="Mixer" variant="coach" hint-size="800px,360px"></dc-import></div>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:600;margin:44px 0 14px">Mở app lần đầu</div>
+  <div style="display:flex;gap:32px;align-items:flex-start">
+
+    <div id="2d" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2d" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2d</a>Splash</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;outline:1px solid #2E2639">
+        <div style="position:relative;width:64px;height:40px"><div style="position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;border:3px solid #FFB547;box-sizing:border-box"></div><div style="position:absolute;right:0;top:0;width:40px;height:40px;border-radius:50%;border:3px solid #45D4C4;box-sizing:border-box"></div></div>
+        <div style="font:600 32px/36px 'Chakra Petch',sans-serif;letter-spacing:.02em">MixDeck</div>
+      </div>
+    </div>
+
+    <div id="2e" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2e" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2e</a>Onboarding 1/3</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="height:56px;display:flex;justify-content:flex-end;align-items:center;padding:0 8px"><button style="height:44px;padding:0 16px;border:0;border-radius:12px;background:transparent;color:#A89EB8;font-size:14px;font-weight:500">Bỏ qua</button></div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center">
+          <div style="position:relative;width:260px;height:150px">
+            <div style="position:absolute;left:0;top:0;width:150px;height:150px;border-radius:50%;border:2px solid #FFB547;box-sizing:border-box;background:repeating-radial-gradient(circle,#1E1828 0 2px,#272031 2px 3px);display:grid;place-items:center"><div style="width:56px;height:56px;border-radius:50%;background:#3A2C1E;border:2px solid #FFB547;display:grid;place-items:center;font:600 22px 'Chakra Petch',sans-serif;color:#FFB547">A</div></div>
+            <div style="position:absolute;right:0;top:0;width:150px;height:150px;border-radius:50%;border:2px solid #45D4C4;box-sizing:border-box;background:repeating-radial-gradient(circle,#1E1828 0 2px,#272031 2px 3px);display:grid;place-items:center"><div style="width:56px;height:56px;border-radius:50%;background:#1B3432;border:2px solid #45D4C4;display:grid;place-items:center;font:600 22px 'Chakra Petch',sans-serif;color:#45D4C4">B</div></div>
+          </div>
+        </div>
+        <div style="padding:0 24px 32px;display:flex;flex-direction:column;align-items:center;gap:24px">
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif;text-align:center;text-wrap:balance">Hai deck, một chiếc điện thoại</div>
+          <div style="display:flex;gap:6px"><span style="width:24px;height:6px;border-radius:3px;background:#F4EFF9"></span><span style="width:6px;height:6px;border-radius:3px;background:#3E3550"></span><span style="width:6px;height:6px;border-radius:3px;background:#3E3550"></span></div>
+          <button style="width:100%;height:52px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Tiếp</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="2f" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2f" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2f</a>Onboarding 2/3</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="height:56px;display:flex;justify-content:flex-end;align-items:center;padding:0 8px"><button style="height:44px;padding:0 16px;border:0;border-radius:12px;background:transparent;color:#A89EB8;font-size:14px;font-weight:500">Bỏ qua</button></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px">
+          <div style="width:296px;background:#282133;border-radius:16px;padding:12px 8px;box-sizing:border-box;position:relative;display:flex;flex-direction:column;gap:8px">
+            <svg width="280" height="44" viewBox="0 0 300 44" style="display:block"><path d="{{ beatPath }}" stroke="#3E3550" stroke-width="1"></path><path d="{{ wavePath }}" fill="#FFB547"></path></svg>
+            <svg width="280" height="44" viewBox="0 0 300 44" style="display:block"><path d="{{ beatPath }}" stroke="#3E3550" stroke-width="1"></path><path d="{{ wavePath }}" fill="#45D4C4"></path></svg>
+            <div style="position:absolute;left:147px;top:8px;bottom:8px;width:2px;background:#F4EFF9"></div>
+          </div>
+          <div style="width:112px;height:52px;border-radius:12px;border:1.5px solid #45D4C4;background:rgba(69,212,196,.12);color:#45D4C4;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px"><span style="width:7px;height:7px;border-radius:50%;background:#45D4C4"></span>Sync</div>
+        </div>
+        <div style="padding:0 24px 32px;display:flex;flex-direction:column;align-items:center;gap:24px">
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif;text-align:center;text-wrap:balance">Chạm SYNC để hai bài chung nhịp</div>
+          <div style="display:flex;gap:6px"><span style="width:6px;height:6px;border-radius:3px;background:#3E3550"></span><span style="width:24px;height:6px;border-radius:3px;background:#F4EFF9"></span><span style="width:6px;height:6px;border-radius:3px;background:#3E3550"></span></div>
+          <button style="width:100%;height:52px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Tiếp</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="2g" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2g" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2g</a>Onboarding 3/3</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="height:56px"></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+          <div style="width:128px;height:128px;border-radius:50%;border:3px solid #FF4F61;box-sizing:border-box;display:grid;place-items:center;background:#282133"><div style="width:48px;height:48px;border-radius:50%;background:#FF4F61"></div></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font:600 22px/26px 'Chakra Petch',sans-serif;color:#FF4F61;font-variant-numeric:tabular-nums">00:42</span><span style="font-size:12px;color:#FF4F61">Đang ghi bản mix</span></div>
+        </div>
+        <div style="padding:0 24px 32px;display:flex;flex-direction:column;align-items:center;gap:24px">
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif;text-align:center;text-wrap:balance">Ghi lại bản mix và gửi cho bạn bè</div>
+          <div style="display:flex;gap:6px"><span style="width:6px;height:6px;border-radius:3px;background:#3E3550"></span><span style="width:6px;height:6px;border-radius:3px;background:#3E3550"></span><span style="width:24px;height:6px;border-radius:3px;background:#F4EFF9"></span></div>
+          <button style="width:100%;height:52px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Tiếp</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="2h" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2h" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2h</a>Giải thích trước khi xin quyền đọc nhạc</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:0 24px">
+          <div style="width:88px;height:88px;border-radius:24px;background:#282133;display:grid;place-items:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17.5V6l10-2v11.5M9 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM19 15.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path></svg></div>
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif">Chọn nhạc từ máy của bạn</div>
+          <div style="font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">MixDeck cần quyền đọc nhạc trên máy để bạn chọn bài vào deck.</div>
+        </div>
+        <div style="padding:0 24px 32px;display:flex;flex-direction:column;gap:12px">
+          <button style="height:52px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Cho phép truy cập nhạc</button>
+          <button style="height:52px;border:1.5px solid #3E3550;border-radius:12px;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Dùng bài mẫu trước</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="2i" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2i" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2i</a>Trang chủ · người mới</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="height:60px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 8px 0 20px"><span style="font:600 24px/30px 'Chakra Petch',sans-serif">MixDeck</span><button aria-label="Cài đặt" style="width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:#A89EB8;display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M19 7h1M4 17h3M13 17h7"></path><circle cx="16" cy="7" r="2.5"></circle><circle cx="10" cy="17" r="2.5"></circle></svg></button></div>
+        <div style="flex:1;overflow:hidden;padding:4px 16px 16px;display:flex;flex-direction:column;gap:24px">
+          <div style="background:#282133;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px">
+            <div style="position:relative;width:120px;height:68px"><div style="position:absolute;left:0;top:0;width:68px;height:68px;border-radius:50%;border:2px solid #FFB547;box-sizing:border-box;background:repeating-radial-gradient(circle,#1E1828 0 2px,#272031 2px 3px);display:grid;place-items:center"><div style="width:24px;height:24px;border-radius:50%;background:#3A2C1E;border:2px solid #FFB547"></div></div><div style="position:absolute;right:0;top:0;width:68px;height:68px;border-radius:50%;border:2px solid #45D4C4;box-sizing:border-box;background:repeating-radial-gradient(circle,#1E1828 0 2px,#272031 2px 3px);display:grid;place-items:center"><div style="width:24px;height:24px;border-radius:50%;background:#1B3432;border:2px solid #45D4C4"></div></div></div>
+            <div style="font-size:18px;line-height:24px;font-weight:600">Sẵn sàng mix?</div>
+            <button style="width:100%;height:52px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Vào bàn DJ</button>
+          </div>
+          <div style="background:#282133;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-size:18px;line-height:24px;font-weight:600">Thử mix với 2 bài mẫu</span><span style="height:22px;padding:0 8px;border-radius:6px;background:#45D4C4;color:#1C1726;display:flex;align-items:center;font-size:12px;font-weight:600">Mới</span></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:24px;height:24px;border-radius:6px;background:#FFB547;color:#1C1726;font:600 14px/24px 'Chakra Petch',sans-serif;text-align:center">A</span><span style="flex:1;font-size:14px">Mẫu 1 · Nhịp nhà</span><span style="font:600 13px 'Chakra Petch',sans-serif">124 <span style="font:400 12px 'Be Vietnam Pro',sans-serif;color:#A89EB8">BPM</span></span></div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:24px;height:24px;border-radius:6px;background:#45D4C4;color:#1C1726;font:600 14px/24px 'Chakra Petch',sans-serif;text-align:center">B</span><span style="flex:1;font-size:14px">Mẫu 2 · Đêm hội</span><span style="font:600 13px 'Chakra Petch',sans-serif">126 <span style="font:400 12px 'Be Vietnam Pro',sans-serif;color:#A89EB8">BPM</span></span></div>
+            </div>
+            <button style="height:48px;border:1.5px solid #3E3550;border-radius:12px;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Mix với bài mẫu</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:18px;line-height:24px;font-weight:600">Học DJ</div>
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+              <div style="height:72px;border-radius:12px;background:#282133;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5v13l10-6.5z"></path></svg>Hướng dẫn</div>
+              <div style="height:72px;border-radius:12px;background:#282133;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h10.5a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10.5"></path></svg>Thuật ngữ</div>
+              <div style="height:72px;border-radius:12px;background:#282133;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"></path></svg>Mẹo</div>
+            </div>
+          </div>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navHome }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:600;margin:44px 0 14px">Dùng hằng ngày</div>
+  <div style="display:flex;gap:32px;align-items:flex-start">
+
+    <div id="2j" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2j" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2j</a>Trang chủ · có phiên trước</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="height:60px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 8px 0 20px"><span style="font:600 24px/30px 'Chakra Petch',sans-serif">MixDeck</span><button aria-label="Cài đặt" style="width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:#A89EB8;display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M19 7h1M4 17h3M13 17h7"></path><circle cx="16" cy="7" r="2.5"></circle><circle cx="10" cy="17" r="2.5"></circle></svg></button></div>
+        <div style="flex:1;overflow:hidden;padding:4px 16px 16px;display:flex;flex-direction:column;gap:24px">
+          <div style="background:#282133;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px">
+            <div style="position:relative;width:120px;height:68px"><div style="position:absolute;left:0;top:0;width:68px;height:68px;border-radius:50%;border:2px solid #FFB547;box-sizing:border-box;background:repeating-radial-gradient(circle,#1E1828 0 2px,#272031 2px 3px);display:grid;place-items:center"><div style="width:24px;height:24px;border-radius:50%;background:#3A2C1E;border:2px solid #FFB547"></div></div><div style="position:absolute;right:0;top:0;width:68px;height:68px;border-radius:50%;border:2px solid #45D4C4;box-sizing:border-box;background:repeating-radial-gradient(circle,#1E1828 0 2px,#272031 2px 3px);display:grid;place-items:center"><div style="width:24px;height:24px;border-radius:50%;background:#1B3432;border:2px solid #45D4C4"></div></div></div>
+            <div style="font-size:18px;line-height:24px;font-weight:600">Sẵn sàng mix?</div>
+            <button style="width:100%;height:52px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Vào bàn DJ</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:18px;line-height:24px;font-weight:600">Tiếp tục phiên trước</div>
+            <div style="background:#282133;border-radius:16px;padding:6px 8px 6px 16px;display:flex;align-items:center;gap:8px">
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+                <div style="height:44px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #3E3550"><span style="flex:none;width:24px;height:24px;border-radius:6px;background:#FFB547;color:#1C1726;font:600 14px/24px 'Chakra Petch',sans-serif;text-align:center">A</span><span style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sài Gòn lên đèn</span><span style="flex:none;font:600 13px 'Chakra Petch',sans-serif">124 <span style="font:400 12px 'Be Vietnam Pro',sans-serif;color:#A89EB8">BPM</span></span></div>
+                <div style="height:44px;display:flex;align-items:center;gap:10px"><span style="flex:none;width:24px;height:24px;border-radius:6px;background:#45D4C4;color:#1C1726;font:600 14px/24px 'Chakra Petch',sans-serif;text-align:center">B</span><span style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Mưa sao băng (Club mix)</span><span style="flex:none;font:600 13px 'Chakra Petch',sans-serif">128 <span style="font:400 12px 'Be Vietnam Pro',sans-serif;color:#A89EB8">BPM</span></span></div>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A89EB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M9.5 6l6 6-6 6"></path></svg>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:18px;line-height:24px;font-weight:600">Học DJ</div>
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+              <div style="height:64px;border-radius:12px;background:#282133;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5v13l10-6.5z"></path></svg>Hướng dẫn</div>
+              <div style="height:64px;border-radius:12px;background:#282133;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h10.5a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10.5"></path></svg>Thuật ngữ</div>
+              <div style="height:64px;border-radius:12px;background:#282133;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"></path></svg>Mẹo</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:18px;line-height:24px;font-weight:600;margin-bottom:8px">Bản mix gần đây</div>
+            <div style="height:52px;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#282133;display:grid;place-items:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F4EFF9"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l10.6-6.8a1 1 0 0 0 0-1.72L9.5 4.34A1 1 0 0 0 8 5.2z"></path></svg></span><span style="flex:1;font-size:14px">Mix 25-09 21:40</span><span style="font:500 14px 'Chakra Petch',sans-serif;color:#A89EB8">03:12</span></div>
+            <div style="height:52px;display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:50%;background:#282133;display:grid;place-items:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F4EFF9"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l10.6-6.8a1 1 0 0 0 0-1.72L9.5 4.34A1 1 0 0 0 8 5.2z"></path></svg></span><span style="flex:1;font-size:14px">Mix 24-09 22:05</span><span style="font:500 14px 'Chakra Petch',sans-serif;color:#A89EB8">05:47</span></div>
+          </div>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navHome }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div id="2k" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2k" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2k</a>Thư viện · đã chạm vào một bài</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:12px">
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif;padding-left:4px">Thư viện</div>
+          <div style="height:44px;border-radius:12px;background:#282133;display:flex;align-items:center;gap:8px;padding:0 12px;color:#A89EB8;font-size:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg>Tìm bài hát, nghệ sĩ</div>
+          <div style="display:flex;gap:6px;overflow:hidden;margin-right:-16px">
+            <span style="flex:none;height:32px;padding:0 14px;border-radius:16px;display:flex;align-items:center;font-size:12px;font-weight:500;background:#F4EFF9;color:#1C1726">Bài hát</span>
+            <span style="flex:none;height:32px;padding:0 14px;border-radius:16px;display:flex;align-items:center;font-size:12px;font-weight:500;background:#282133;color:#A89EB8">Playlist</span>
+            <span style="flex:none;height:32px;padding:0 14px;border-radius:16px;display:flex;align-items:center;font-size:12px;font-weight:500;background:#282133;color:#A89EB8">Album</span>
+            <span style="flex:none;height:32px;padding:0 14px;border-radius:16px;display:flex;align-items:center;font-size:12px;font-weight:500;background:#282133;color:#A89EB8">Nghệ sĩ</span>
+            <span style="flex:none;height:32px;padding:0 14px;border-radius:16px;display:flex;align-items:center;font-size:12px;font-weight:500;background:#282133;color:#A89EB8">Thư mục</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#A89EB8"><span>248 bài</span><span style="height:32px;display:flex;align-items:center;gap:4px;color:#F4EFF9;font-weight:500">Sắp xếp: BPM<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></span></div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:0 16px;display:flex;flex-direction:column">
+          <sc-for list="{{ songs }}" as="s" hint-placeholder-count="8">
+            <div style="height:60px;flex:none;display:flex;align-items:center;gap:12px">
+              <div style="width:44px;height:44px;border-radius:8px;flex:none;background:{{ s.c }};display:grid;place-items:center;font:600 12px 'Chakra Petch',sans-serif">{{ s.ini }}</div>
+              <div style="flex:1;min-width:0"><div style="font-size:14px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.t }}</div><div style="font-size:12px;line-height:16px;color:#A89EB8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.a }} · {{ s.d }}</div></div>
+              <div style="flex:none;min-width:52px;height:24px;padding:0 8px;box-sizing:border-box;border-radius:6px;background:#282133;border:1px solid #3E3550;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font:600 13px/1 'Chakra Petch',sans-serif;color:{{ s.bFg }}">{{ s.b }}</span><span style="font-size:12px;color:#A89EB8">BPM</span></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navLib }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+        <div style="position:absolute;inset:0;background:rgba(20,16,25,.66)"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;background:#282133;border-top:1px solid #3E3550;border-radius:24px 24px 0 0;padding:10px 16px 24px;display:flex;flex-direction:column;gap:8px">
+          <div style="width:36px;height:4px;border-radius:2px;background:#3E3550;align-self:center"></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 4px 12px;border-bottom:1px solid #3E3550">
+            <div style="width:48px;height:48px;border-radius:8px;background:#5E3B4A;display:grid;place-items:center;font:600 13px 'Chakra Petch',sans-serif;flex:none">TT</div>
+            <div style="flex:1;min-width:0"><div style="font-size:16px;line-height:22px;font-weight:600">Tầng thượng 102</div><div style="font-size:12px;line-height:16px;color:#A89EB8">Cáo Nhỏ · 04:40 · 126 BPM</div></div>
+          </div>
+          <div style="height:56px;display:flex;align-items:center;gap:14px;padding:0 4px;font-size:14px;font-weight:500"><span style="width:28px;height:28px;border-radius:7px;background:#FFB547;color:#1C1726;font:600 15px/28px 'Chakra Petch',sans-serif;text-align:center">A</span>Nạp vào Deck A</div>
+          <div style="height:56px;display:flex;align-items:center;gap:14px;padding:0 4px;font-size:14px;font-weight:500"><span style="width:28px;height:28px;border-radius:7px;background:#45D4C4;color:#1C1726;font:600 15px/28px 'Chakra Petch',sans-serif;text-align:center">B</span>Nạp vào Deck B</div>
+          <div style="height:56px;display:flex;align-items:center;gap:14px;padding:0 4px;font-size:14px;font-weight:500"><span style="width:28px;height:28px;display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H5a1 1 0 0 1-1-1zM20 15h-3v5h2a1 1 0 0 0 1-1z"></path></svg></span>Nghe thử</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="2l" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2l" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2l</a>Bản ghi · đang nghe, menu mở</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="padding:12px 20px 12px;font:600 24px/30px 'Chakra Petch',sans-serif">Bản ghi của tôi</div>
+        <div style="flex:1;position:relative;padding:0 8px;display:flex;flex-direction:column;gap:2px">
+          <sc-for list="{{ recs }}" as="r" hint-placeholder-count="4">
+            <div style="height:72px;flex:none;border-radius:12px;background:{{ r.bg }};display:flex;align-items:center;gap:12px;padding:0 0 0 8px">
+              <div style="width:56px;height:44px;border-radius:8px;background:#282133;flex:none;display:grid;place-items:center"><svg width="56" height="28" viewBox="0 0 56 28"><path d="{{ r.wave }}" fill="{{ r.wc }}"></path></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:14px;line-height:20px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.n }}</div><div style="font-size:12px;line-height:16px;color:#A89EB8;display:flex;gap:6px"><span>{{ r.meta }}</span><sc-if value="{{ r.playing }}" hint-placeholder-val="{{ false }}"><span style="color:#F4EFF9">· Đang phát</span></sc-if></div></div>
+              <button aria-label="Tuỳ chọn bản ghi" style="width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:#A89EB8;display:grid;place-items:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5.5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="18.5" r="1.8"></circle></svg></button>
+            </div>
+          </sc-for>
+          <div style="position:absolute;right:48px;top:118px;width:184px;background:#362D44;border:1px solid #4B4160;border-radius:12px;padding:4px 0;display:flex;flex-direction:column">
+            <div style="height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3z"></path></svg>Đổi tên</div>
+            <div style="height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4EFF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4M5 13v6h14v-6"></path></svg>Chia sẻ</div>
+            <div style="height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:14px;color:#FF4F61"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF4F61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13"></path></svg>Xoá</div>
+          </div>
+        </div>
+        <div style="height:64px;flex:none;background:#282133;position:relative;display:flex;align-items:center;gap:12px;padding:0 16px">
+          <div style="position:absolute;left:0;right:0;top:0;height:2px;background:#3E3550"><div style="width:40%;height:2px;background:#F4EFF9"></div></div>
+          <button aria-label="Tạm dừng" style="width:44px;height:44px;border:0;border-radius:50%;background:#F4EFF9;display:grid;place-items:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1C1726"><rect x="6.5" y="5" width="4" height="14" rx="1.5"></rect><rect x="13.5" y="5" width="4" height="14" rx="1.5"></rect></svg></button>
+          <div style="flex:1;min-width:0;font-size:14px;font-weight:500">Mix 25-09 21:40</div>
+          <div style="font:500 14px 'Chakra Petch',sans-serif;color:#A89EB8;font-variant-numeric:tabular-nums">01:17 / 03:12</div>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navRec }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div id="2m" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2m" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2m</a>Bản ghi · trống</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="padding:12px 20px 12px;font:600 24px/30px 'Chakra Petch',sans-serif">Bản ghi của tôi</div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:0 40px 60px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#282133;display:grid;place-items:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#A89EB8" stroke-width="2" stroke-linecap="round"><path d="M4 12h1.5M8 8v8M12 5v14M16 9v6M20 11v2"></path></svg></div>
+          <div style="font-size:14px;line-height:20px;color:#A89EB8;text-align:center;text-wrap:pretty">Chưa có bản mix nào. Vào bàn DJ và bấm REC để ghi bản đầu tiên.</div>
+          <button style="height:52px;padding:0 28px;border:0;border-radius:12px;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Vào bàn DJ</button>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navRec }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:600;margin:44px 0 14px">Học DJ và Cài đặt</div>
+  <div style="display:flex;gap:32px;align-items:flex-start">
+
+    <div id="2n" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2n" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2n</a>Học DJ · Hướng dẫn</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:12px">
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif;padding-left:4px">Học DJ</div>
+          <div style="display:flex;gap:4px;background:#282133;border-radius:12px;padding:3px">
+            <div style="flex:1;height:40px;border-radius:10px;background:#362D44;display:grid;place-items:center;font-size:14px;font-weight:600">Hướng dẫn</div>
+            <div style="flex:1;height:40px;border-radius:10px;display:grid;place-items:center;font-size:14px;font-weight:500;color:#A89EB8">Thuật ngữ</div>
+            <div style="flex:1;height:40px;border-radius:10px;display:grid;place-items:center;font-size:14px;font-weight:500;color:#A89EB8">Mẹo</div>
+          </div>
+          <div style="font-size:12px;color:#A89EB8;padding-left:4px">Đã học 2/7 bài · mỗi bài mở bàn DJ và chỉ từng nút</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:8px 8px 0;display:flex;flex-direction:column;gap:2px">
+          <sc-for list="{{ lessons }}" as="l" hint-placeholder-count="7">
+            <div style="height:60px;flex:none;border-radius:12px;background:{{ l.bg }};display:flex;align-items:center;gap:12px;padding:0 12px">
+              <div style="width:32px;height:32px;border-radius:50%;flex:none;box-sizing:border-box;border:1.5px solid {{ l.cBorder }};background:{{ l.cBg }};color:{{ l.cFg }};display:grid;place-items:center;font:600 14px 'Chakra Petch',sans-serif">
+                <sc-if value="{{ l.done }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A89EB8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+                <sc-if value="{{ l.notDone }}" hint-placeholder-val="{{ true }}">{{ l.n }}</sc-if>
+              </div>
+              <div style="flex:1;min-width:0"><div style="font-size:14px;line-height:20px;font-weight:500;color:{{ l.nameFg }}">{{ l.name }}</div><div style="font-size:12px;line-height:16px;color:#A89EB8">{{ l.steps }}</div></div>
+              <sc-if value="{{ l.current }}" hint-placeholder-val="{{ false }}"><span style="height:32px;padding:0 12px;border-radius:10px;background:#F4EFF9;color:#1C1726;display:flex;align-items:center;font-size:12px;font-weight:600">Bắt đầu</span></sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navLearn }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div id="2o" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2o" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2o</a>Học DJ · Thuật ngữ</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:12px">
+          <div style="font:600 24px/30px 'Chakra Petch',sans-serif;padding-left:4px">Học DJ</div>
+          <div style="display:flex;gap:4px;background:#282133;border-radius:12px;padding:3px">
+            <div style="flex:1;height:40px;border-radius:10px;display:grid;place-items:center;font-size:14px;font-weight:500;color:#A89EB8">Hướng dẫn</div>
+            <div style="flex:1;height:40px;border-radius:10px;background:#362D44;display:grid;place-items:center;font-size:14px;font-weight:600">Thuật ngữ</div>
+            <div style="flex:1;height:40px;border-radius:10px;display:grid;place-items:center;font-size:14px;font-weight:500;color:#A89EB8">Mẹo</div>
+          </div>
+          <div style="height:44px;border-radius:12px;background:#282133;display:flex;align-items:center;gap:8px;padding:0 12px;color:#A89EB8;font-size:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg>Tìm thuật ngữ</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:4px 20px 0;display:flex;flex-direction:column">
+          <sc-for list="{{ glossary }}" as="g" hint-placeholder-count="5">
+            <div style="padding:14px 0 6px;border-bottom:1px solid #3E3550;display:flex;flex-direction:column;gap:4px">
+              <div style="font-size:16px;line-height:22px;font-weight:600">{{ g.t }}</div>
+              <div style="font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">{{ g.d }}</div>
+              <div style="height:40px;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600">Xem trên mixer<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="height:72px;flex:none;display:flex;background:#282133;border-top:1px solid #3E3550">
+          <sc-for list="{{ navLearn }}" as="n" hint-placeholder-count="4">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><div style="width:56px;height:30px;border-radius:15px;background:{{ n.bg }};display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ n.fg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg></div><div style="font-size:12px;line-height:16px;font-weight:{{ n.weight }};color:{{ n.fg }}">{{ n.label }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div id="2q" style="display:flex;flex-direction:column;gap:10px;width:360px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#2q" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">2q</a>Cài đặt</div>
+      <div style="width:360px;height:800px;background:#1C1726;border-radius:20px;overflow:hidden;position:relative;display:flex;flex-direction:column;outline:1px solid #2E2639">
+        <div style="height:28px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:500"><span>21:40</span><span style="display:flex;gap:5px;align-items:center"><svg width="14" height="12" viewBox="0 0 14 12"><path d="M13 0v12H0z" fill="#A89EB8"></path></svg><span style="width:20px;height:10px;border-radius:3px;border:1.5px solid #A89EB8;box-sizing:border-box;padding:1px;display:flex"><span style="width:70%;background:#F4EFF9;border-radius:1px"></span></span></span></div>
+        <div style="height:60px;flex:none;display:flex;align-items:center;gap:4px;padding:0 8px">
+          <button aria-label="Quay lại" style="width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:#F4EFF9;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"></path></svg></button>
+          <span style="font:600 24px/30px 'Chakra Petch',sans-serif">Cài đặt</span>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:0 20px;display:flex;flex-direction:column;gap:20px">
+          <sc-for list="{{ setGroups }}" as="g" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column">
+              <div style="font-size:12px;line-height:16px;font-weight:600;color:#A89EB8;margin-bottom:4px">{{ g.title }}</div>
+              <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+                <div style="border-bottom:1px solid #282133">
+                  <sc-if value="{{ r.isValue }}" hint-placeholder-val="{{ true }}">
+                    <div style="min-height:52px;display:flex;align-items:center;gap:8px"><span style="flex:1;font-size:14px;line-height:20px">{{ r.label }}</span><span style="font-size:14px;color:#A89EB8">{{ r.value }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A89EB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"></path></svg></div>
+                  </sc-if>
+                  <sc-if value="{{ r.isToggle }}" hint-placeholder-val="{{ false }}">
+                    <div style="min-height:52px;display:flex;align-items:center;gap:12px;padding:6px 0;box-sizing:border-box">
+                      <div style="flex:1"><div style="font-size:14px;line-height:20px">{{ r.label }}</div><sc-if value="{{ r.hasSub }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;line-height:16px;color:#A89EB8">{{ r.sub }}</div></sc-if></div>
+                      <div role="switch" style="width:44px;height:26px;border-radius:13px;background:{{ r.tBg }};border:1.5px solid {{ r.tBorder }};box-sizing:border-box;position:relative;flex:none"><div style="position:absolute;left:{{ r.kLeft }}px;top:2.5px;width:18px;height:18px;border-radius:50%;background:{{ r.kFg }}"></div></div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ r.isSlider }}" hint-placeholder-val="{{ false }}">
+                    <div style="padding:12px 0;display:flex;flex-direction:column;gap:10px">
+                      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px;line-height:20px">{{ r.label }}</span><span style="font:500 14px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums">{{ r.value }}</span></div>
+                      <div style="height:24px;position:relative"><div style="position:absolute;left:0;right:0;top:11px;height:2px;background:#3E3550;border-radius:1px"></div><div style="position:absolute;left:0;width:30%;top:11px;height:2px;background:#F4EFF9;border-radius:1px"></div><div style="position:absolute;left:30%;top:2px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:#F4EFF9"></div></div>
+                      <button style="align-self:flex-start;height:44px;padding:0 14px;border:1.5px solid #3E3550;border-radius:12px;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Kiểm tra độ trễ</button>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="t1" style="padding:40px 44px 48px;color:#F4EFF9;background:#141019;width:max-content;min-width:100%;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+    <a href="#t1" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#F4EFF9;color:#1C1726;border-radius:4px;text-decoration:none">1</a>
+    <span style="font:600 24px/30px 'Chakra Petch',sans-serif">MixDeck · Mixer và bảng component</span>
+  </div>
+  <p style="margin:0 0 28px;max-width:760px;font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">Khung 800 × 360 dp. Các bản mixer đều bấm được: Play, Sync, Scratch, chuyển Đĩa/Pad, tab pad, REC, kéo crossfader (chạm đúp để về giữa), nhấn giữ jog wheel. Nhãn giữa đĩa đang là ô màu thay cho ảnh bìa bài hát.</p>
+
+  <div style="display:flex;flex-wrap:nowrap;gap:32px;align-items:flex-start">
+    <div id="1a" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#1a" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">1a</a>Đang mix: A phát và có loop 4 beat, B đã Sync, Low của B đang kill</div>
+      <div style="width:800px;height:360px;border-radius:14px;overflow:hidden;border:1px solid #2E2639">
+        <dc-import name="Mixer" variant="play" hint-size="800px,360px"></dc-import>
+      </div>
+    </div>
+    <div id="1b" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#1b" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">1b</a>Deck A ở chế độ Pad (hot cue), đang ghi bản mix</div>
+      <div style="width:800px;height:360px;border-radius:14px;overflow:hidden;border:1px solid #2E2639">
+        <dc-import name="Mixer" variant="pad" hint-size="800px,360px"></dc-import>
+      </div>
+    </div>
+    <div id="1c" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#1c" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">1c</a>Deck B trống, panel thư viện mở; bài hợp nhịp với Deck A (chênh ≤ 3%) được đánh dấu</div>
+      <div style="width:800px;height:360px;border-radius:14px;overflow:hidden;border:1px solid #2E2639">
+        <dc-import name="Mixer" variant="library" hint-size="800px,360px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <div id="1d" style="display:flex;flex-direction:column;gap:10px;margin-top:40px">
+    <div style="display:flex;align-items:baseline;gap:8px;font-size:12px;color:#A89EB8"><a href="#1d" style="font:600 11px ui-monospace,Menlo,monospace;padding:3px 7px;background:#282133;color:#F4EFF9;border-radius:5px;text-decoration:none">1d</a>Bảng component và trạng thái</div>
+    <div style="width:1300px;background:#1C1726;border:1px solid #2E2639;border-radius:14px;padding:32px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Jog wheel</div><div style="font-size:12px;color:#A89EB8">Chạm giữ + xoay để scratch hoặc chỉnh lệch nhịp</div></div>
+        <div style="display:flex;gap:24px;align-items:flex-start">
+          <sc-for list="{{ jogs }}" as="j" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+              <div style="width:120px;height:120px;border-radius:50%;position:relative;box-sizing:border-box;border:2px {{ j.rimStyle }} {{ j.rim }};box-shadow:{{ j.ring }};background:#211B2B">
+                <sc-if value="{{ j.loaded }}" hint-placeholder-val="{{ true }}">
+                  <div data-strobe="1" style="position:absolute;inset:0;border-radius:50%;animation:md-spin 1.8s linear infinite;animation-play-state:{{ j.spin }}">
+                    <div style="position:absolute;inset:10px;border-radius:50%;background:repeating-radial-gradient(circle at center,#1E1828 0 2px,#272031 2px 3px)"></div>
+                    <sc-for list="{{ j.dots }}" as="dot" hint-placeholder-count="0">
+                      <div style="position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:{{ dot.c }};transform:rotate({{ dot.deg }}deg) translateY(-52px)"></div>
+                    </sc-for>
+                    <div style="position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#3A2C1E;box-sizing:border-box;border:2px solid #FFB547;display:grid;place-items:center"><span style="font:600 12px/1 'Chakra Petch',sans-serif;color:#FFB547">SG</span></div>
+                    <div style="position:absolute;left:50%;top:11px;width:3px;height:14px;margin-left:-1.5px;background:#F4EFF9;border-radius:2px"></div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ j.empty }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#A89EB8;font-size:12px;line-height:16px;text-align:center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg><span style="width:76px">Chạm để chọn bài</span>
+                  </div>
+                </sc-if>
+              </div>
+              <div style="font-size:12px;color:#A89EB8">{{ j.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Knob</div><div style="font-size:12px;color:#A89EB8">Kéo lên/xuống · chạm đúp về giữa · nhấn giữ để kill</div></div>
+        <div style="display:flex;gap:28px;align-items:flex-end">
+          <sc-for list="{{ knobs }}" as="k" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;position:relative">
+              <sc-if value="{{ k.bubble }}" hint-placeholder-val="{{ false }}">
+                <div style="height:26px;padding:0 8px;border-radius:8px;background:#F4EFF9;color:#1C1726;display:flex;align-items:center;font:600 14px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">Mid +3.5 dB</div>
+              </sc-if>
+              <svg width="56" height="56" viewBox="0 0 44 44">
+                <path d="{{ trackArc }}" stroke="#3E3550" stroke-width="3" fill="none" stroke-linecap="round"></path>
+                <path d="{{ k.arc }}" stroke="{{ k.arcColor }}" stroke-width="3" fill="none" stroke-linecap="round"></path>
+                <circle cx="22" cy="1.2" r="1.2" fill="#A89EB8"></circle>
+                <circle cx="22" cy="22" r="13" fill="#362D44" stroke="{{ k.body }}" stroke-width="1.2"></circle>
+                <line x1="22" y1="11" x2="22" y2="17" stroke="{{ k.ptr }}" stroke-width="2.5" stroke-linecap="round" transform="rotate({{ k.deg }} 22 22)"></line>
+              </svg>
+              <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:#A89EB8">{{ k.label }}
+                <sc-if value="{{ k.kill }}" hint-placeholder-val="{{ false }}"><span style="padding:0 5px;border-radius:4px;background:#FF4F61;color:#1C1726;font-weight:600">Kill</span></sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Fader dọc</div><div style="font-size:12px;color:#A89EB8">Âm lượng kênh · Pitch có nấc giữa</div></div>
+        <div style="display:flex;gap:32px;align-items:flex-end">
+          <sc-for list="{{ faders }}" as="f" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div style="position:relative;width:56px;height:140px">
+                <div style="position:absolute;left:27px;top:4px;bottom:4px;width:2px;background:#3E3550;border-radius:1px"></div>
+                <sc-if value="{{ f.notch }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:18px;top:69px;width:20px;height:2px;background:#A89EB8"></div></sc-if>
+                <div style="position:absolute;left:14px;width:28px;height:32px;top:{{ f.top }}px;background:#362D44;border:1.5px solid {{ f.border }};border-radius:6px;box-sizing:border-box;display:grid;place-items:center"><div style="width:14px;height:2px;background:{{ f.line }};border-radius:1px"></div></div>
+                <sc-if value="{{ f.bubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:46px;top:{{ f.top }}px;height:26px;margin-top:3px;padding:0 7px;border-radius:8px;background:#F4EFF9;color:#1C1726;display:flex;align-items:center;font:600 14px 'Chakra Petch',sans-serif">{{ f.value }}</div></sc-if>
+              </div>
+              <div style="font-size:12px;color:#A89EB8;white-space:nowrap">{{ f.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Crossfader</div><div style="font-size:12px;color:#A89EB8">Kéo ngang · nấc giữa có rung · chạm đúp về giữa</div></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ xfs }}" as="x" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font:600 14px/1 'Chakra Petch',sans-serif;color:#FFB547">A</span>
+              <div style="width:220px;height:36px;position:relative">
+                <div style="position:absolute;left:0;right:0;top:16px;height:4px;border-radius:2px;background:linear-gradient(to right,rgba(255,181,71,.55) 0 50%,rgba(69,212,196,.55) 50% 100%)"></div>
+                <div style="position:absolute;left:109px;top:10px;width:2px;height:16px;background:#A89EB8"></div>
+                <div style="position:absolute;top:4px;width:36px;height:28px;left:{{ x.left }}px;background:#362D44;border:1px solid #4B4160;border-radius:8px;box-sizing:border-box;display:grid;place-items:center"><div style="width:2px;height:14px;background:#F4EFF9;border-radius:1px"></div></div>
+              </div>
+              <span style="font:600 14px/1 'Chakra Petch',sans-serif;color:#45D4C4">B</span>
+              <span style="font-size:12px;color:#A89EB8;width:52px">{{ x.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Pad</div><div style="font-size:12px;color:#A89EB8">Lưới 2 × 4 · Sampler dùng màu trung tính vì phát ra kênh tổng</div></div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <sc-for list="{{ padStates }}" as="p" hint-placeholder-count="5">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div style="width:64px;height:60px;border-radius:10px;box-sizing:border-box;border:1.5px {{ p.bstyle }} {{ p.border }};background:{{ p.bg }};color:{{ p.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+                <span style="font-family:{{ p.font }};font-size:{{ p.size }}px;font-weight:600;line-height:18px">{{ p.main }}</span>
+                <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:14px;padding:0 4px;border-radius:4px;background:#3E3550;color:#F4EFF9">Premium</span></sc-if>
+              </div>
+              <div style="font-size:12px;color:#A89EB8;white-space:nowrap">{{ p.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Waveform</div><div style="font-size:12px;color:#A89EB8">Cuộn quanh vạch phát cố định ở giữa</div></div>
+        <div style="display:grid;grid-template-columns:repeat(2,300px);gap:14px 20px">
+          <sc-for list="{{ waves }}" as="w" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="width:300px;height:44px;border-radius:8px;background:#1C1726;position:relative;overflow:hidden">
+                <sc-if value="{{ w.analyzing }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;left:0;right:0;top:20px;height:4px;background:#3E3550;border-radius:2px"></div>
+                  <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(244,239,249,.08),transparent);animation:md-shimmer 1.4s linear infinite"></div>
+                  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:#A89EB8">Đang phân tích nhịp…</div>
+                </sc-if>
+                <sc-if value="{{ w.ready }}" hint-placeholder-val="{{ true }}">
+                  <sc-if value="{{ w.loop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:0;bottom:0;left:118px;width:128px;background:rgba(255,181,71,.2);border-left:1.5px solid #FFB547;border-right:1.5px solid #FFB547;box-sizing:border-box"></div></sc-if>
+                  <svg width="300" height="44" style="position:absolute;inset:0"><path d="{{ beatPath }}" stroke="#3E3550" stroke-width="1"></path><path d="{{ wavePath }}" fill="#FFB547"></path></svg>
+                  <div style="position:absolute;left:0;top:0;bottom:0;width:150px;background:rgba(28,23,38,.5)"></div>
+                  <sc-if value="{{ w.cue }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;left:214px;top:0;bottom:0;width:2px;background:#F4EFF9"></div>
+                    <div style="position:absolute;left:210px;top:0;width:18px;height:14px;border-radius:0 3px 3px 0;background:#F4EFF9;color:#1C1726;font:600 12px/14px 'Chakra Petch',sans-serif;padding-left:4px;box-sizing:border-box">2</div>
+                  </sc-if>
+                  <div style="position:absolute;left:149px;top:0;bottom:0;width:2px;background:#F4EFF9"></div>
+                </sc-if>
+              </div>
+              <div style="font-size:12px;color:#A89EB8">{{ w.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Nút bật/tắt</div><div style="font-size:12px;color:#A89EB8">Tắt thì trầm; bật thì viền, chữ và đèn LED sáng màu deck</div></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;max-width:420px">
+          <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="6">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div style="width:80px;height:48px;border-radius:12px;box-sizing:border-box;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:{{ t.led }}"></span>{{ t.name }}</div>
+              <div style="font-size:12px;color:#A89EB8">{{ t.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">VU meter</div><div style="font-size:12px;color:#A89EB8">Thanh dọc theo từng kênh</div></div>
+        <div style="display:flex;gap:24px;align-items:flex-end">
+          <sc-for list="{{ vus }}" as="v" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div style="width:10px;height:120px;position:relative;background:#3E3550;border-radius:2px;overflow:hidden">
+                <div style="position:absolute;left:0;right:0;bottom:0;height:{{ v.h }}%;background:linear-gradient(to top,#FFB547 0 {{ v.split }}%,#FF4F61 {{ v.split }}% 100%)"></div>
+                <div style="position:absolute;inset:0;background:repeating-linear-gradient(to top,transparent 0 5px,#282133 5px 7px)"></div>
+              </div>
+              <div style="font-size:12px;color:#A89EB8">{{ v.label }}</div>
+            </div>
+          </sc-for>
+          <div style="width:200px;padding:10px 12px;border-radius:12px;background:#1C1726;border:1.5px solid #FF4F61;font-size:12px;line-height:16px;color:#F4EFF9;margin-bottom:26px">Âm lượng đang quá tải. Hạ fader hoặc âm lượng tổng.</div>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+        <div><div style="font-size:14px;font-weight:600">Badge</div><div style="font-size:12px;color:#A89EB8">BPM, Mới</div></div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div style="height:24px;padding:0 8px;border-radius:6px;background:#1C1726;border:1px solid #3E3550;display:flex;align-items:center;gap:3px"><span style="font:600 13px/1 'Chakra Petch',sans-serif">124</span><span style="font-size:12px;color:#A89EB8">BPM</span></div>
+          <div style="height:24px;padding:0 8px;border-radius:6px;background:#1C1726;border:1px solid #3E3550;display:flex;align-items:center;gap:3px"><span style="font:600 13px/1 'Chakra Petch',sans-serif;color:#A89EB8">…</span><span style="font-size:12px;color:#A89EB8">BPM</span></div>
+          <div style="height:24px;padding:0 8px;border-radius:6px;background:#FFB547;color:#1C1726;display:flex;align-items:center;gap:3px"><span style="font:600 13px/1 'Chakra Petch',sans-serif">124.0</span><span style="font-size:12px;font-weight:500">BPM</span></div>
+          
+          <div style="height:24px;padding:0 8px;border-radius:6px;background:#45D4C4;color:#1C1726;display:flex;align-items:center;font-size:12px;font-weight:600">Mới</div>
+          <div style="height:24px;display:flex;align-items:center;gap:4px;font-size:12px;color:#FFB547"><span style="width:5px;height:5px;border-radius:50%;background:#FFB547"></span>Hợp nhịp Deck A</div>
+        </div>
+      </div>
+
+      <div style="background:#282133;border-radius:12px;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px;width:1234px;box-sizing:border-box">
+        <div><div style="font-size:14px;font-weight:600">Bottom sheet, hộp thoại, toast, banner</div><div style="font-size:12px;color:#A89EB8">Dùng chung toàn app</div></div>
+        <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
+          <div style="width:360px;background:#1C1726;border-radius:16px;padding-top:40px;overflow:hidden">
+            <div style="background:#282133;border-radius:24px 24px 0 0;border-top:1px solid #3E3550;padding:10px 20px 20px;display:flex;flex-direction:column;gap:16px">
+              <div style="width:36px;height:4px;border-radius:2px;background:#3E3550;align-self:center"></div>
+              <div style="font-size:18px;line-height:24px;font-weight:600">Ghi âm bản mix</div>
+              <div style="font-size:14px;line-height:20px;color:#A89EB8;text-wrap:pretty">MixDeck ghi trực tiếp âm thanh phát ra từ app, không dùng micro. Tiếng ồn xung quanh sẽ không bị thu vào.</div>
+              <div style="display:flex;align-items:center;gap:12px;min-height:48px;border-top:1px solid #3E3550;border-bottom:1px solid #3E3550">
+                <div style="flex:1;font-size:14px;line-height:20px">Thêm giọng của tôi qua micro</div>
+                <div role="switch" aria-checked="false" style="width:44px;height:26px;border-radius:13px;background:#362D44;border:1.5px solid #4B4160;box-sizing:border-box;position:relative"><div style="position:absolute;left:3px;top:3px;width:17px;height:17px;border-radius:50%;background:#A89EB8"></div></div>
+              </div>
+              <button style="height:48px;border-radius:12px;border:0;background:#FF4F61;color:#1C1726;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px"><span style="width:10px;height:10px;border-radius:50%;background:#1C1726"></span>Bắt đầu ghi</button>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="width:312px;background:#282133;border:1px solid #3E3550;border-radius:20px;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px">
+              <div style="font-size:18px;line-height:24px;font-weight:600">Đặt lại bản mix?</div>
+              <div style="font-size:14px;line-height:20px;color:#A89EB8">Đặt lại toàn bộ EQ, FX, loop và crossfader?</div>
+              <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:4px">
+                <button style="height:44px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Huỷ</button>
+                <button style="height:44px;padding:0 16px;border-radius:12px;border:0;background:#FF4F61;color:#1C1726;font-size:14px;font-weight:600">Đặt lại</button>
+              </div>
+            </div>
+            <div style="width:312px;background:#282133;border:1px solid #3E3550;border-radius:20px;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px">
+              <div style="font-size:18px;line-height:24px;font-weight:600">Dừng ghi và lưu bản mix?</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <button style="height:44px;border-radius:12px;border:0;background:#F4EFF9;color:#1C1726;font-size:14px;font-weight:600">Lưu</button>
+                <button style="height:44px;border-radius:12px;border:1.5px solid #3E3550;background:transparent;color:#FF4F61;font-size:14px;font-weight:600">Bỏ bản ghi</button>
+                <button style="height:44px;border-radius:12px;border:0;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Tiếp tục ghi</button>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;width:440px">
+            <div style="background:#362D44;border-radius:12px;padding:6px 6px 6px 16px;display:flex;align-items:center;gap:8px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#45D4C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+              <div style="flex:1;font-size:14px">Đã lưu bản mix</div>
+              <button style="height:44px;padding:0 14px;border-radius:10px;border:0;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Nghe</button>
+              <button style="height:44px;padding:0 14px;border-radius:10px;border:0;background:transparent;color:#F4EFF9;font-size:14px;font-weight:600">Chia sẻ</button>
+            </div>
+            <div style="background:#362D44;border:1.5px solid #FF4F61;border-radius:12px;padding:12px 16px;display:flex;align-items:flex-start;gap:10px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF4F61" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>
+              <div style="font-size:14px;line-height:20px">Không đọc được tệp này. Hãy chọn tệp MP3, M4A, WAV hoặc FLAC.</div>
+            </div>
+            <div style="background:#282133;border:1.5px solid #FF4F61;border-radius:12px;padding:8px 8px 8px 16px;display:flex;align-items:center;gap:12px">
+              <div style="flex:1;font-size:14px;line-height:20px">Không phát được âm thanh. Thử tăng độ trễ âm thanh trong Cài đặt.</div>
+              <button style="height:44px;padding:0 14px;border-radius:10px;border:0;background:#FF4F61;color:#1C1726;font-size:14px;font-weight:600;white-space:nowrap">Mở Cài đặt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin:28px 0 0;font-size:12px;line-height:18px;color:#A89EB8">Tiếp theo: bảng FX chi tiết có XY pad (6.7), hộp thoại lưu bản mix, sau đó các màn dọc theo thứ tự mục 6 (Splash, Onboarding, Xin quyền, Trang chủ, Thư viện…).</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  P(a, r = 18, c = 22) { const t = a * Math.PI / 180; return `${(c + r * Math.sin(t)).toFixed(2)} ${(c - r * Math.cos(t)).toFixed(2)}`; }
+  arc(v) { const a1 = (v - 0.5) * 270; if (Math.abs(a1) < 2) return ''; const s = Math.min(0, a1), e = Math.max(0, a1); return `M${this.P(s)}A18 18 0 ${e - s > 180 ? 1 : 0} 1 ${this.P(e)}`; }
+  wave() {
+    let s = 11, d = ''; const r = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+    for (let i = 0; i < 75; i++) { const k = i % 8; const h = Math.max(2, Math.min(18, (k === 0 ? 1 : k === 1 ? .8 : .3 + .5 * r()) * (0.6 + 0.3 * Math.sin(i / 9)) * 20)); d += `M${i * 4} ${(22 - h).toFixed(1)}h3v${(2 * h).toFixed(1)}h-3z`; }
+    return d;
+  }
+  mini(seed) {
+    let s = seed, d = ''; const r = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+    for (let i = 0; i < 16; i++) { const h = 3 + r() * 9 * (0.6 + 0.4 * Math.sin(i / 2.5)); d += `M${4 + i * 3} ${(14 - h).toFixed(1)}h2v${(2 * h).toFixed(1)}h-2z`; }
+    return d;
+  }
+  screens() {
+    const HOME = 'M4 11l8-6.5 8 6.5M6.5 9.5V19h11V9.5', LIB = 'M9 17.5V6l10-2v11.5M9 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM19 15.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z', REC = 'M4 12h1.5M8 8v8M12 5v14M16 9v6M20 11v2', LEARN = 'M3 9l9-4.5L21 9l-9 4.5zM7 11v4.5c0 1.4 2.2 3 5 3s5-1.6 5-3V11';
+    const nav = a => [['Trang chủ', HOME], ['Thư viện', LIB], ['Bản ghi', REC], ['Học DJ', LEARN]].map(([label, icon], i) => ({ label, icon, fg: i === a ? '#F4EFF9' : '#A89EB8', bg: i === a ? '#362D44' : 'transparent', weight: i === a ? 600 : 500 }));
+    const ini = t => t.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    const songs = [['Tết về rồi', 'Nhóm Mùa Xuân', '03:15', '100', '#3B5E4A'], ['Vòng quay', 'Lam Anh', '03:58', '118', '#4A4A5E'], ['Chạy về phía biển', 'Vy Hạ', '03:48', '122', '#4A3B5E'], ['Sài Gòn lên đèn', 'Mây Tầng Thượng', '04:12', '124', '#5E4A3B'], ['Không cần lời', 'DJ Tâm', '05:02', '125', '#3B4A5E'], ['Tầng thượng 102', 'Cáo Nhỏ', '04:40', '126', '#5E3B4A'], ['Mưa sao băng (Club mix)', 'Đèn Neon', '04:26', '128', '#2E4E4A'], ['Phố đêm', 'Hạ Vũ', '03:31', '…', '#4E452E']]
+      .map(([t, a, d, b, c]) => ({ t, a, d, b, c, ini: ini(t), bFg: b === '…' ? '#A89EB8' : '#F4EFF9' }));
+    const recs = [['Mix 25-09 21:40', '03:12', '25/09/2026'], ['Mix 24-09 22:05', '05:47', '24/09/2026'], ['Tiệc sinh nhật Linh', '12:30', '20/09/2026'], ['Mix 18-09 23:10', '02:05', '18/09/2026']]
+      .map(([n, d, date], i) => ({ n, meta: `${d} · ${date}`, wave: this.mini(i * 13 + 5), wc: i === 0 ? '#F4EFF9' : '#A89EB8', playing: i === 0, bg: i === 0 ? '#282133' : 'transparent' }));
+    const steps = [4, 3, 4, 5, 4, 5, 3];
+    const lessons = ['Nạp bài và phát', 'Dùng Sync', 'Chuyển bài bằng crossfader', 'Dùng EQ', 'Tạo loop', 'Thêm FX', 'Ghi âm'].map((name, i) => ({
+      name, n: i + 1, steps: `${steps[i]} bước`, done: i < 2, notDone: i >= 2, current: i === 2,
+      bg: i === 2 ? '#282133' : 'transparent', cBg: i < 2 ? '#362D44' : i === 2 ? '#F4EFF9' : 'transparent', cFg: i === 2 ? '#1C1726' : '#A89EB8', cBorder: i > 2 ? '#3E3550' : 'transparent', nameFg: i < 2 ? '#A89EB8' : '#F4EFF9',
+    }));
+    const glossary = [
+      ['Deck', 'Một bên của bàn DJ, nơi phát một bài. MixDeck có Deck A bên trái và Deck B bên phải.'],
+      ['Crossfader', 'Thanh trượt ngang dưới cùng. Kéo về A để nghe Deck A, về B để nghe Deck B, để ở giữa để nghe cả hai.'],
+      ['BPM', 'Số nhịp mỗi phút, cho biết bài nhanh hay chậm. Hai bài có BPM gần nhau dễ mix hơn.'],
+      ['Cue', 'Điểm bạn đánh dấu trong bài. Bấm Cue để quay về điểm đó và bắt đầu lại.'],
+      ['Sync', 'Tự chỉnh tốc độ một deck cho khớp nhịp với deck còn lại.'],
+    ].map(([t, d]) => ({ t, d }));
+    const premRows = [['2 deck, EQ, crossfader, Sync', '✓', '✓'], ['Hot cue', '4', '8'], ['Loop', '✓', '✓'], ['FX', '6', 'Tất cả'], ['Bộ âm thanh sampler', '1 bộ', 'Tất cả'], ['Ghi âm bản mix (MP3)', '✓', '✓'], ['Ghi âm WAV chất lượng cao', '—', '✓'], ['Không quảng cáo', '—', '✓']]
+      .map(([f, a, b]) => ({ f, aCheck: a === '✓', aText: a !== '✓', a, aFg: a === '—' ? '#A89EB8' : '#F4EFF9', bCheck: b === '✓', bText: b !== '✓', b }));
+    const V = (label, value) => ({ label, value, isValue: true }), T = (label, on, sub) => ({ label, isToggle: true, hasSub: !!sub, sub: sub || '', tBg: on ? '#F4EFF9' : '#362D44', tBorder: on ? '#F4EFF9' : '#4B4160', kFg: on ? '#1C1726' : '#A89EB8', kLeft: on ? 21 : 3 });
+    const setGroups = [
+      { title: 'Âm thanh', rows: [{ label: 'Độ trễ âm thanh', value: '40 ms', isSlider: true }, T('Nghe trước qua tai nghe (pre-cue)', false, 'Cần tai nghe tách kênh'), V('Âm lượng tổng mặc định', '80%')] },
+      { title: 'Ghi âm', rows: [V('Định dạng mặc định', 'MP3'), V('Chất lượng', '320 kbps'), V('Thư mục lưu', 'Music/MixDeck')] },
+      { title: 'Mixer', rows: [V('Phạm vi Pitch mặc định', '±8%'), V('Chế độ jog wheel mặc định', 'Đĩa'), T('Rung phản hồi', true), T('Giữ màn hình luôn sáng', true)] },
+      { title: 'Chung', rows: [V('Ngôn ngữ', 'Tiếng Việt'), V('Quyền truy cập', ''), V('Giao diện', 'Tối'), V('Liên hệ hỗ trợ', '')] },
+    ];
+    return { navHome: nav(0), navLib: nav(1), navRec: nav(2), navLearn: nav(3), songs, recs, lessons, glossary, premRows, setGroups };
+  }
+  renderVals() {
+    const A = '#FFB547', B = '#45D4C4';
+    const dots = c => { const o = []; for (let i = 0; i < 32; i++) o.push({ deg: i * 11.25, c }); return o; };
+    const knob = (v, label, kill, bubble) => ({ label, kill: !!kill, bubble: !!bubble, deg: (v - 0.5) * 270, arc: this.arc(v), arcColor: kill ? '#FF4F61' : A, ptr: kill ? '#FF4F61' : '#F4EFF9', body: kill ? '#FF4F61' : bubble ? A : '#4B4160' });
+    let bp = ''; for (let x = 6; x < 300; x += 32) bp += `M${x + 0.5} 0v44`;
+    const on = { bg: A + '2E', border: A, fg: A, bstyle: 'solid' };
+    const num = "'Chakra Petch',sans-serif", ui = "'Be Vietnam Pro',sans-serif";
+    return {
+      ...this.screens(),
+      trackArc: `M${this.P(-135)}A18 18 0 1 1 ${this.P(135)}`, beatPath: bp, wavePath: this.wave(),
+      jogs: [
+        { label: 'Trống', loaded: false, empty: true, rim: '#3E3550', rimStyle: 'dashed', ring: 'none', spin: 'paused', dots: [] },
+        { label: 'Đang dừng', loaded: true, empty: false, rim: A, rimStyle: 'solid', ring: 'none', spin: 'paused', dots: dots('#3E3550') },
+        { label: 'Đang phát', loaded: true, empty: false, rim: A, rimStyle: 'solid', ring: 'none', spin: 'running', dots: dots(A) },
+        { label: 'Đang chạm', loaded: true, empty: false, rim: A, rimStyle: 'solid', ring: `0 0 0 5px ${A}55`, spin: 'paused', dots: dots(A) },
+      ],
+      knobs: [knob(0.5, 'Mặc định'), knob(0.63, 'Đang kéo', false, true), knob(0, 'Low', true)],
+      faders: [
+        { label: 'Mặc định', top: 22, border: '#4B4160', line: '#F4EFF9', notch: false, bubble: false },
+        { label: 'Đang kéo', top: 40, border: A, line: A, notch: false, bubble: true, value: '82%' },
+        { label: 'Pitch · nấc giữa', top: 54, border: '#4B4160', line: '#F4EFF9', notch: true, bubble: false },
+      ],
+      xfs: [{ label: 'Lệch A', left: 22 }, { label: 'Giữa', left: 92 }, { label: 'Lệch B', left: 166 }],
+      padStates: [
+        { label: 'Tắt', main: '4', font: num, size: 18, bg: '#362D44', border: '#362D44', fg: '#A89EB8', bstyle: 'solid' },
+        Object.assign({ label: 'Bật', main: '1', font: num, size: 18 }, on),
+        { label: 'Đang giữ', main: '1', font: num, size: 18, bg: A, border: A, fg: '#1C1726', bstyle: 'solid' },
+        { label: 'Sampler bật', main: 'Vỗ tay', font: ui, size: 12, bg: '#F4EFF91F', border: '#F4EFF9', fg: '#F4EFF9', bstyle: 'solid' },
+      ],
+      waves: [
+        { label: 'Đang phân tích', analyzing: true, ready: false },
+        { label: 'Bình thường', ready: true },
+        { label: 'Có vùng loop (4 beat)', ready: true, loop: true },
+        { label: 'Có điểm cue', ready: true, cue: true },
+      ],
+      toggles: [
+        { name: 'Sync', label: 'Tắt', border: '#3E3550', bg: '#362D44', fg: '#A89EB8', led: '#3E3550' },
+        { name: 'Sync', label: 'Bật · Deck A', border: A, bg: A + '1F', fg: A, led: A },
+        { name: 'Sync', label: 'Bật · Deck B', border: B, bg: B + '1F', fg: B, led: B },
+        { name: 'Loop', label: 'Bật · Deck A', border: A, bg: A + '1F', fg: A, led: A },
+        { name: 'FX', label: 'Bật · Deck B', border: B, bg: B + '1F', fg: B, led: B },
+        { name: 'Scratch', label: 'Chế độ đĩa', border: A, bg: 'transparent', fg: A, led: A },
+      ],
+      vus: [{ label: 'Bình thường', h: 64, split: 138 }, { label: 'Quá tải', h: 100, split: 88 }],
+    };
+  }
+}
+</script>
+</body>
+</html>

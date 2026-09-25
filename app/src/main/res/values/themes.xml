@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- values/ = light tokens, values-night/ = dark tokens. Default mode is dark (applied in DJRemixProApp). -->
+    <style name="Base.Theme.DJRemixPro" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/md_text</item>
+        <item name="colorOnPrimary">@color/md_booth</item>
+        <item name="colorPrimaryContainer">@color/md_raised</item>
+        <item name="colorOnPrimaryContainer">@color/md_text</item>
+        <item name="colorSecondary">@color/md_deck_b</item>
+        <item name="colorOnSecondary">@color/md_booth</item>
+        <item name="colorTertiary">@color/md_deck_a</item>
+        <item name="colorOnTertiary">@color/md_booth</item>
+        <item name="colorError">@color/md_rec</item>
+        <item name="colorOnError">@color/md_booth</item>
+        <item name="android:colorBackground">@color/md_booth</item>
+        <item name="colorOnBackground">@color/md_text</item>
+        <item name="colorSurface">@color/md_panel</item>
+        <item name="colorOnSurface">@color/md_text</item>
+        <item name="colorOnSurfaceVariant">@color/md_muted</item>
+        <item name="colorSurfaceContainer">@color/md_panel</item>
+        <item name="colorSurfaceContainerHigh">@color/md_raised</item>
+        <item name="colorSurfaceContainerHighest">@color/md_raised</item>
+        <item name="colorOutline">@color/md_line</item>
+        <item name="colorOutlineVariant">@color/md_line</item>
+        <item name="android:windowBackground">@color/md_booth</item>
+        <item name="android:textColorPrimary">@color/md_text</item>
+        <item name="android:textColorSecondary">@color/md_muted</item>
+        <!-- Fonts come from text appearances only. A theme-level fontFamily is a fallback of
+             obtainStyledAttributes and silently overrides every textAppearance (VISUAL_REVIEW V01). -->
+        <item name="android:textViewStyle">@style/Widget.MixDeck.TextView</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.MixDeck.Heading</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.MixDeck.Heading</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.MixDeck.Subheading</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.MixDeck.Body.Medium</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.MixDeck.Body</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.MixDeck.Body</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.MixDeck.Caption</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.MixDeck.Button</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.MixDeck.Caption.Medium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.MixDeck.Caption.Medium</item>
+        <!-- No M3 elevation tint on sheets/dialogs: the design is flat (VISUAL_REVIEW V06). -->
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/md_fixed_splash</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.DJRemixPro.BottomSheet</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.DJRemixPro.Dialog</item>
+    </style>
+
+    <style name="Theme.DJRemixPro" parent="Base.Theme.DJRemixPro" />
+
+    <!-- Mixer: landscape, immersive (system bars hidden in MixerActivity). -->
+    <style name="Theme.DJRemixPro.Mixer" parent="Base.Theme.DJRemixPro">
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
+    </style>
+
+    <!-- Bottom nav pill 56x30, radius 15, raised when selected (App.dc.html:239). -->
+    <style name="Widget.DJRemixPro.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">@dimen/nav_pill_width</item>
+        <item name="android:height">@dimen/nav_pill_height</item>
+        <item name="android:color">@color/md_raised</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.DJRemixPro.Pill</item>
+    </style>
+
+    <style name="ShapeAppearance.DJRemixPro.Pill" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_15</item>
+    </style>
+
+    <style name="ThemeOverlay.DJRemixPro.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.DJRemixPro.BottomSheet</item>
+        <item name="android:backgroundDimAmount">0.66</item>
+        <item name="android:navigationBarColor">@color/md_panel</item>
+    </style>
+
+    <style name="Widget.DJRemixPro.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/md_panel</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.DJRemixPro.SheetTop</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+    </style>
+
+    <style name="ShapeAppearance.DJRemixPro.SheetTop" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_24</item>
+        <item name="cornerSizeTopRight">@dimen/radius_24</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.DJRemixPro.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/md_panel</item>
+        <item name="colorSurfaceContainerHigh">@color/md_panel</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.DJRemixPro.Dialog</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
+
+    <style name="ShapeAppearance.DJRemixPro.Dialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_20</item>
+    </style>
+</resources>

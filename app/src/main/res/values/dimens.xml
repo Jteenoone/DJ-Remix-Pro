@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MixDeck design tokens. Source: design/DESIGNER_REPORT.md §4.3 (1 CSS px = 1 dp). -->
+<resources>
+    <!-- Spacing -->
+    <dimen name="space_2">2dp</dimen>
+    <dimen name="space_3">3dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_6">6dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_10">10dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_14">14dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_28">28dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="screen_padding_h">16dp</dimen>
+    <dimen name="section_gap">24dp</dimen>
+
+    <!-- Corner radius -->
+    <dimen name="radius_4">4dp</dimen>
+    <dimen name="radius_5">5dp</dimen>
+    <dimen name="radius_6">6dp</dimen>
+    <dimen name="radius_7">7dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
+    <dimen name="radius_10">10dp</dimen>
+    <dimen name="radius_12">12dp</dimen>
+    <dimen name="radius_13">13dp</dimen>
+    <dimen name="radius_15">15dp</dimen>
+    <dimen name="radius_16">16dp</dimen>
+    <dimen name="radius_20">20dp</dimen>
+    <dimen name="radius_24">24dp</dimen>
+
+    <!-- Stroke -->
+    <dimen name="stroke_1">1dp</dimen>
+    <dimen name="stroke_1_5">1.5dp</dimen>
+    <dimen name="stroke_2">2dp</dimen>
+
+    <!-- Touch / controls -->
+    <dimen name="touch_min">44dp</dimen>
+    <dimen name="icon_16">16dp</dimen>
+    <dimen name="icon_18">18dp</dimen>
+    <dimen name="icon_20">20dp</dimen>
+    <dimen name="icon_22">22dp</dimen>
+    <dimen name="icon_24">24dp</dimen>
+    <dimen name="icon_40">40dp</dimen>
+    <dimen name="button_primary_height">52dp</dimen>
+    <dimen name="button_outline_height">48dp</dimen>
+    <dimen name="button_dialog_height">44dp</dimen>
+    <dimen name="search_height">44dp</dimen>
+    <dimen name="chip_height">32dp</dimen>
+    <dimen name="segment_height">40dp</dimen>
+    <dimen name="segment_height_settings">44dp</dimen>
+    <dimen name="switch_width">44dp</dimen>
+    <dimen name="switch_height">26dp</dimen>
+    <dimen name="radio_size">22dp</dimen>
+    <dimen name="sheet_handle_width">36dp</dimen>
+    <dimen name="sheet_handle_height">4dp</dimen>
+
+    <!-- App shell -->
+    <dimen name="top_bar_height">60dp</dimen>
+    <dimen name="bottom_nav_height">72dp</dimen>
+    <dimen name="nav_pill_width">56dp</dimen>
+    <dimen name="nav_pill_height">30dp</dimen>
+    <dimen name="mini_player_height">64dp</dimen>
+    <dimen name="toast_height">52dp</dimen>
+
+    <!-- List rows -->
+    <dimen name="row_song_height">60dp</dimen>
+    <dimen name="row_recent_height">56dp</dimen>
+    <dimen name="row_recording_height">72dp</dimen>
+    <dimen name="row_settings_min_height">52dp</dimen>
+    <dimen name="row_language_min_height">60dp</dimen>
+    <dimen name="row_lesson_height">60dp</dimen>
+    <dimen name="cover_size">44dp</dimen>
+    <dimen name="cover_size_sheet">48dp</dimen>
+    <dimen name="deck_letter_size">24dp</dimen>
+
+    <!-- Mixer (landscape 800 x 360) -->
+    <dimen name="mixer_top_bar_height">72dp</dimen>
+    <dimen name="mixer_deck_width">280dp</dimen>
+    <dimen name="mixer_gap">4dp</dimen>
+    <dimen name="mixer_rec_width">104dp</dimen>
+    <dimen name="jog_size">152dp</dimen>
+    <dimen name="knob_size">44dp</dimen>
+    <dimen name="knob_size_fx">52dp</dimen>
+    <dimen name="fader_width">22dp</dimen>
+    <dimen name="vu_width">8dp</dimen>
+    <dimen name="crossfader_height">44dp</dimen>
+    <dimen name="transport_height">56dp</dimen>
+    <dimen name="deck_header_height">36dp</dimen>
+    <dimen name="deck_center_height">160dp</dimen>
+    <dimen name="waveform_lane_height">18dp</dimen>
+    <dimen name="overview_height">8dp</dimen>
+</resources>

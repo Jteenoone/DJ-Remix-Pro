@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S5 Library (App:99-120). Search filters for real (D-17); chips only change selection. -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_booth"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/space_4"
+        android:paddingBottom="@dimen/space_24">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_height"
+            android:layout_marginStart="@dimen/screen_padding_h"
+            android:layout_marginEnd="@dimen/screen_padding_h"
+            android:background="@drawable/bg_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space_12"
+            android:paddingEnd="@dimen/space_12">
+
+            <ImageView
+                android:layout_width="@dimen/icon_18"
+                android:layout_height="@dimen/icon_18"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_search"
+                app:tint="@color/md_muted" />
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/library_search_hint"
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.MixDeck.Body"
+                android:textColorHint="@color/md_muted" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_6"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/screen_padding_h"
+            android:paddingEnd="@dimen/screen_padding_h"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/layout_chips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chip_songs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_min"
+                    android:background="@drawable/bg_chip"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/space_14"
+                    android:paddingEnd="@dimen/space_14"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:textColor="@color/sel_chip_text"
+                    android:text="@string/library_tab_songs" />
+
+                <TextView
+                    android:id="@+id/chip_playlists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_min"
+                    android:background="@drawable/bg_chip"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/space_14"
+                    android:paddingEnd="@dimen/space_14"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:textColor="@color/sel_chip_text"
+                    android:layout_marginStart="@dimen/space_6"
+                    android:text="@string/library_tab_playlists" />
+
+                <TextView
+                    android:id="@+id/chip_albums"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_min"
+                    android:background="@drawable/bg_chip"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/space_14"
+                    android:paddingEnd="@dimen/space_14"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:textColor="@color/sel_chip_text"
+                    android:layout_marginStart="@dimen/space_6"
+                    android:text="@string/library_tab_albums" />
+
+                <TextView
+                    android:id="@+id/chip_artists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_min"
+                    android:background="@drawable/bg_chip"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/space_14"
+                    android:paddingEnd="@dimen/space_14"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:textColor="@color/sel_chip_text"
+                    android:layout_marginStart="@dimen/space_6"
+                    android:text="@string/library_tab_artists" />
+
+                <TextView
+                    android:id="@+id/chip_folders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/touch_min"
+                    android:background="@drawable/bg_chip"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/space_14"
+                    android:paddingEnd="@dimen/space_14"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:textColor="@color/sel_chip_text"
+                    android:layout_marginStart="@dimen/space_6"
+                    android:text="@string/library_tab_folders" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touch_min"
+            android:layout_marginStart="@dimen/screen_padding_h"
+            android:layout_marginEnd="@dimen/screen_padding_h"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_count"
+                android:textAlignment="viewStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:accessibilityLiveRegion="polite"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+                tools:text="10 bài" />
+
+            <LinearLayout
+                android:id="@+id/button_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="-4dp"
+                android:background="@drawable/sel_sort_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/space_4"
+                android:paddingEnd="@dimen/space_4">
+
+                <TextView
+                    android:id="@+id/text_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:textColor="@color/md_text"
+                    tools:text="Sắp xếp: BPM" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="@color/md_text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_songs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"
+            android:paddingStart="@dimen/screen_padding_h"
+            android:paddingEnd="@dimen/screen_padding_h"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_song" />
+
+        <TextView
+            android:id="@+id/text_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            android:gravity="center"
+            android:paddingStart="@dimen/screen_padding_h"
+            android:paddingEnd="@dimen/screen_padding_h"
+            android:text="@string/library_empty_search"
+            android:textAppearance="@style/TextAppearance.MixDeck.Body.Muted"
+            android:visibility="gone" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

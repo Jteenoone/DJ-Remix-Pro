@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Radio 22, selected: 2dp text ring + 10dp text dot (App:221). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <stroke android:width="2dp" android:color="@color/md_text" />
+        </shape>
+    </item>
+    <item android:gravity="center" android:width="10dp" android:height="10dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/md_text" />
+        </shape>
+    </item>
+</layer-list>

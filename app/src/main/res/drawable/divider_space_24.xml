@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Transparent 24dp gap between sections (App:28 gap 24), used with showDividers="middle". -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <size android:height="@dimen/section_gap" android:width="@dimen/section_gap" />
+    <solid android:color="@android:color/transparent" />
+</shape>

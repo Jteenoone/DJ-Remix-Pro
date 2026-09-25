@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Primary button label/icon; disabled = muted (VIS-11). Owner: lead. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/md_muted" android:state_enabled="false" />
+    <item android:color="@color/md_booth" />
+</selector>

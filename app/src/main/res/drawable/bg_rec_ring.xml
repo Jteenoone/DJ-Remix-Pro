@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding 3/3 illustration: 3dp rec ring on panel (MixDeck:163). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/md_panel" />
+    <stroke android:width="3dp" android:color="@color/md_rec" />
+</shape>

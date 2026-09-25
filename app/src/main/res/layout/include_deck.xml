@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deck panel (Mixer:75-168): panel r12, padding 8, gap 6 → header 36, centre 160 (jog or pad mode), transport 56.
+  Written for Deck A (left). Deck B uses the same layout mirrored with layoutDirection=rtl (row-reverse);
+  the pad area and numbers force ltr so pad order and "−02:31" stay as designed.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/mixer_deck_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_panel_r12"
+    android:orientation="vertical"
+    android:padding="@dimen/space_8">
+
+    <!-- Header 36 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/deck_header_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_deck_letter"
+            android:fontFamily="@font/chakra_petch_semibold"
+            android:layout_width="@dimen/deck_letter_size"
+            android:layout_height="@dimen/deck_letter_size"
+            android:background="@drawable/bg_deck_a_r6"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Letter"
+            android:textColor="@color/md_booth"
+            tools:text="A" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.MixDeck.Body.Medium"
+                android:textSize="13sp"
+                app:lineHeight="18sp"
+                tools:text="Sài Gòn lên đèn" />
+
+            <TextView
+                android:id="@+id/text_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+                tools:text="Mây Tầng Thượng" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_8"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="true"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_bpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Numeric.BpmLarge"
+                    android:textDirection="ltr"
+                    tools:text="124.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/bpm_unit"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="14dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Time"
+                android:textDirection="ltr"
+                app:lineHeight="14sp"
+                tools:text="−02:31" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Centre 160 (grows on taller screens) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_6"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:minHeight="@dimen/deck_center_height">
+
+        <!-- Jog mode: pitch 40 · jog · column 48 (gap 8) -->
+        <LinearLayout
+            android:id="@+id/layout_jog_mode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:text="@string/mixer_pitch"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+                <com.example.djremixpro.core.ui.widget.VerticalFaderView
+                    android:id="@+id/fader_pitch"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:layout_marginBottom="@dimen/space_4"
+                    android:layout_weight="1"
+                    app:mdFaderStyle="pitch" />
+
+                <!-- "+0.0%" (Chakra 14) is ~41dp: 56dp box centred on the 40dp column, drawn over the gaps. -->
+                <TextView
+                    android:id="@+id/text_pitch"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-8dp"
+                    android:layout_marginEnd="-8dp"
+                    android:gravity="center"
+                    android:importantForAccessibility="no"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Numeric"
+                    android:textDirection="ltr"
+                    tools:text="+0.0%" />
+            </LinearLayout>
+
+            <com.example.djremixpro.core.ui.widget.JogWheelView
+                android:id="@+id/jog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_booth_r12"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_2">
+
+                    <TextView
+                        android:id="@+id/button_mode_jog"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:background="@drawable/sel_segment"
+                        android:gravity="center"
+                        android:text="@string/mixer_mode_jog"
+                        android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                        android:textColor="@color/sel_segment_text" />
+
+                    <TextView
+                        android:id="@+id/button_mode_pad"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@drawable/sel_segment"
+                        android:gravity="center"
+                        android:text="@string/mixer_mode_pad"
+                        android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                        android:textColor="@color/sel_segment_text" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/button_scratch"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/touch_min"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/led_scratch"
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:background="@drawable/shape_led" />
+
+                    <TextView
+                        android:id="@+id/text_scratch"
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="3dp"
+                        app:autoSizeMaxTextSize="12sp"
+                        app:autoSizeMinTextSize="9sp"
+                        app:autoSizeStepGranularity="0.5sp"
+                        app:autoSizeTextType="uniform"
+                        android:text="@string/mixer_scratch"
+                        android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Pad mode: tabs 40 + grid 4x2 (gap 6); always ltr. -->
+        <LinearLayout
+            android:id="@+id/layout_pad_mode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="ltr"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/segment_height"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/button_back_to_jog"
+                    android:layout_width="@dimen/touch_min"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sel_raised_r10"
+                    android:clickable="true"
+                    android:contentDescription="@string/mixer_mode_jog_cd"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_20"
+                        android:layout_height="@dimen/icon_20"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_jog_mode"
+                        app:tint="@color/md_muted" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tab_cue"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/mixer_tab_cue" />
+
+                <TextView
+                    android:id="@+id/tab_loop"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/mixer_tab_loop" />
+
+                <TextView
+                    android:id="@+id/tab_fx"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/mixer_tab_fx" />
+
+                <TextView
+                    android:id="@+id/tab_sampler"
+                    android:textAppearance="@style/TextAppearance.MixDeck.Caption.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/mixer_tab_sampler" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_6"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <include android:id="@+id/pad_1" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" />
+                <include android:id="@+id/pad_2" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="@dimen/space_6" />
+                <include android:id="@+id/pad_3" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="@dimen/space_6" />
+                <include android:id="@+id/pad_4" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="@dimen/space_6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_6"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <include android:id="@+id/pad_5" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" />
+                <include android:id="@+id/pad_6" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="@dimen/space_6" />
+                <include android:id="@+id/pad_7" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="@dimen/space_6" />
+                <include android:id="@+id/pad_8" layout="@layout/item_pad" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="@dimen/space_6" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Transport 56: Play 1.25 · Cue 1 · Sync 1, gap 6 -->
+    <LinearLayout
+        android:id="@+id/layout_transport"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/transport_height"
+        android:layout_marginTop="@dimen/space_6"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/button_play"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/image_play"
+                android:layout_width="@dimen/icon_24"
+                android:layout_height="@dimen/icon_24"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_play" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/button_cue"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_6"
+            android:layout_weight="1"
+            android:background="@drawable/bg_cue_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/mixer_cue"
+            android:textAppearance="@style/TextAppearance.MixDeck.Button"
+            android:textColor="@color/md_text" />
+
+        <LinearLayout
+            android:id="@+id/button_sync"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_6"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/led_sync"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:background="@drawable/shape_led" />
+
+            <TextView
+                android:id="@+id/text_sync"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_6"
+                android:text="@string/mixer_sync"
+                android:textAppearance="@style/TextAppearance.MixDeck.Button" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

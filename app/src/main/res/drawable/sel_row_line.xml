@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- List row with 1dp bottom line and a pressed ripple (settings, language). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/md_raised">
+    <item android:drawable="@drawable/bg_bottom_line" />
+</ripple>

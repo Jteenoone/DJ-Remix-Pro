@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- REC button while recording: 1.5 border in rec colour. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/md_raised">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_panel" />
+            <corners android:radius="@dimen/radius_12" />
+            <stroke android:width="@dimen/stroke_1_5" android:color="@color/md_rec" />
+        </shape>
+    </item>
+</ripple>

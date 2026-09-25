@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Settings switch row (App:203-207): label (+ optional subtitle) and the 44x26 switch. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sel_row_line"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/row_settings_min_height"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/space_6"
+    android:paddingBottom="@dimen/space_6">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_label"
+            android:textAlignment="viewStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MixDeck.Body"
+            tools:text="Rung phản hồi" />
+
+        <TextView
+            android:id="@+id/text_sub"
+            android:textAlignment="viewStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <com.example.djremixpro.core.ui.widget.MdSwitchView
+        android:id="@+id/switch_view"
+        android:layout_width="@dimen/switch_width"
+        android:layout_height="@dimen/switch_height"
+        android:layout_marginStart="@dimen/space_12" />
+</LinearLayout>

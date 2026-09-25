@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MixDeck logo (splash #2d, paths of ic_logo_mixdeck) uniformly scaled to 52x32.5 and centred in the 108dp
+     adaptive-icon canvas. A single square vector keeps the rings round when the launcher or the system splash
+     rescales the icon (an InsetDrawable around the 64x40 vector was stretched, VIS-12). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.8125"
+        android:scaleY="0.8125"
+        android:translateX="28"
+        android:translateY="37.75">
+        <path
+            android:pathData="M1.5,20a18.5,18.5 0 1,0 37,0a18.5,18.5 0 1,0 -37,0z"
+            android:fillColor="#00000000"
+            android:strokeColor="#FFFFB547"
+            android:strokeWidth="3" />
+        <path
+            android:pathData="M25.5,20a18.5,18.5 0 1,0 37,0a18.5,18.5 0 1,0 -37,0z"
+            android:fillColor="#00000000"
+            android:strokeColor="#FF45D4C4"
+            android:strokeWidth="3" />
+    </group>
+</vector>

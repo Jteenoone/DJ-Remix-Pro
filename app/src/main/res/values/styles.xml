@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Typography and shared widget styles. Source: design/DESIGNER_REPORT.md §4.2. Numbers use tabular figures (tnum). -->
+<resources>
+    <!-- Be Vietnam Pro (UI) -->
+    <style name="TextAppearance.MixDeck" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/be_vietnam_pro_regular</item>
+        <item name="fontFamily">@font/be_vietnam_pro_regular</item>
+        <item name="android:textColor">@color/md_text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Heading">
+        <item name="android:fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Subheading">
+        <item name="android:fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">22sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Subheading.Medium">
+        <item name="android:fontFamily">@font/be_vietnam_pro_medium</item>
+        <item name="fontFamily">@font/be_vietnam_pro_medium</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Body" />
+    <style name="TextAppearance.MixDeck.Body.Medium">
+        <item name="android:fontFamily">@font/be_vietnam_pro_medium</item>
+        <item name="fontFamily">@font/be_vietnam_pro_medium</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Body.Muted">
+        <item name="android:textColor">@color/md_muted</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Button">
+        <item name="android:fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:textColor">@color/md_muted</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Caption.Medium">
+        <item name="android:fontFamily">@font/be_vietnam_pro_medium</item>
+        <item name="fontFamily">@font/be_vietnam_pro_medium</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Caption.Semibold">
+        <item name="android:fontFamily">@font/be_vietnam_pro_semibold</item>
+        <item name="fontFamily">@font/be_vietnam_pro_semibold</item>
+    </style>
+
+    <!-- Chakra Petch (titles, numbers) -->
+    <style name="TextAppearance.MixDeck.Display">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="lineHeight">36sp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Title">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">30sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric">
+        <item name="android:fontFamily">@font/chakra_petch_medium</item>
+        <item name="fontFamily">@font/chakra_petch_medium</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Time">
+        <item name="android:textColor">@color/md_muted</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Rec">
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Bold">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.BpmLarge">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="lineHeight">22sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Badge">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="lineHeight">16sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Letter">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Small">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+    </style>
+    <style name="TextAppearance.MixDeck.Numeric.Pad">
+        <item name="android:fontFamily">@font/chakra_petch_semibold</item>
+        <item name="fontFamily">@font/chakra_petch_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">18sp</item>
+    </style>
+
+    <!-- Default for every TextView without its own textAppearance (Be Vietnam Pro 14/20). -->
+    <style name="Widget.MixDeck.TextView" parent="android:Widget.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.MixDeck</item>
+    </style>
+
+    <!-- Buttons -->
+    <style name="Widget.MixDeck.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/button_primary_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/shell_button_primary_bg</item>
+        <item name="android:textColor">@color/shell_button_primary_fg</item>
+        <item name="iconTint">@color/shell_button_primary_fg</item>
+        <item name="cornerRadius">@dimen/radius_12</item>
+        <item name="android:textAppearance">@style/TextAppearance.MixDeck.Button</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="elevation">0dp</item>
+    </style>
+    <style name="Widget.MixDeck.Button.Outline" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/button_outline_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="strokeColor">@color/md_line</item>
+        <item name="strokeWidth">@dimen/stroke_1_5</item>
+        <item name="android:textColor">@color/md_text</item>
+        <item name="cornerRadius">@dimen/radius_12</item>
+        <item name="android:textAppearance">@style/TextAppearance.MixDeck.Button</item>
+    </style>
+    <style name="Widget.MixDeck.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">32dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">@dimen/space_8</item>
+        <item name="android:paddingEnd">@dimen/space_8</item>
+        <item name="android:textColor">@color/md_muted</item>
+        <item name="android:textAppearance">@style/TextAppearance.MixDeck.Caption.Medium</item>
+    </style>
+    <style name="Widget.MixDeck.IconButton" parent="Widget.Material3.Button.IconButton">
+        <item name="android:minWidth">@dimen/touch_min</item>
+        <item name="android:minHeight">@dimen/touch_min</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconSize">@dimen/icon_24</item>
+        <item name="iconTint">@color/md_text</item>
+        <item name="cornerRadius">@dimen/radius_12</item>
+        <item name="rippleColor">@color/md_raised</item>
+    </style>
+</resources>

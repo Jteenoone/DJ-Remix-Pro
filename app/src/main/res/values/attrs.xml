@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom view attributes (owner: ui-developer). Prefix md* avoids clashes with Material attrs. -->
+<resources>
+    <!-- Deck accent: a = md_deck_a (amber), b = md_deck_b (teal). -->
+    <attr name="mdDeck" format="enum">
+        <enum name="a" value="0" />
+        <enum name="b" value="1" />
+    </attr>
+
+    <declare-styleable name="JogWheelView">
+        <attr name="mdDeck" />
+    </declare-styleable>
+
+    <declare-styleable name="VinylArtView">
+        <attr name="mdDeck" />
+        <!-- Diameter of the centre label (Home 26dp, onboarding 56dp, recordings 24dp). -->
+        <attr name="mdLabelSize" format="dimension" />
+        <attr name="mdLabelText" format="string" />
+        <attr name="mdLabelTextSize" format="dimension" />
+        <!-- true: rim uses the themed deck colour (Home, App:33); false: fixed vinyl colour (onboarding). -->
+        <attr name="mdRimThemed" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="KnobView">
+        <attr name="mdDeck" />
+        <!-- Band name shown in the drag bubble, e.g. "Mid" → "Mid +3.5 dB". -->
+        <attr name="mdBandLabel" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="VerticalFaderView">
+        <attr name="mdDeck" />
+        <attr name="mdFaderStyle" format="enum">
+            <!-- 22dp wide, thumb 22x30, rail inset 4dp (Mixer:191-193). -->
+            <enum name="volume" value="0" />
+            <!-- 40dp wide, thumb 28x16, centre notch 16x2 (Mixer:92-97). -->
+            <enum name="pitch" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ScrollingWaveformView">
+        <attr name="mdDeck" />
+        <!-- false hides the deck letter chip (onboarding illustration). -->
+        <attr name="mdShowLabel" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="OverviewBarView">
+        <attr name="mdDeck" />
+        <!-- Visible bar height; the view may be taller to enlarge the touch target. -->
+        <attr name="mdBarHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="VuMeterView">
+        <attr name="mdDeck" />
+        <!-- md-vu cycle: A 900 ms, B 1070 ms with -300 ms phase (Mixer:478-479). -->
+        <attr name="mdVuPeriodMs" format="integer" />
+        <attr name="mdVuPhaseMs" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="XYPadView">
+        <attr name="mdDeck" />
+    </declare-styleable>
+
+    <!-- View tag keys used by ui code. -->
+    <item name="tag_toggle_checked" type="id" />
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raised r10 button with pressed ripple (mixer "back to jog" button, Mixer:138). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/md_line2">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_raised" />
+            <corners android:radius="@dimen/radius_10" />
+        </shape>
+    </item>
+</ripple>

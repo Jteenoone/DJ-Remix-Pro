@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Waveform playhead 2x42, text colour, radius 1 (Mixer:57). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/md_text" />
+    <corners android:radius="1dp" />
+</shape>

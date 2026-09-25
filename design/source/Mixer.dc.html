@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Chakra+Petch:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@keyframes md-spin{to{transform:rotate(360deg)}}
+@keyframes md-wave{from{transform:translateX(0)}to{transform:translateX(-1216px)}}
+@keyframes md-vu{0%{transform:scaleY(.48)}18%{transform:scaleY(.2)}36%{transform:scaleY(.4)}55%{transform:scaleY(.16)}74%{transform:scaleY(.52)}100%{transform:scaleY(.48)}}
+@keyframes md-blink{0%,49%{opacity:1}50%,100%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){[data-strobe]{animation:none!important}}
+button{font-family:inherit;padding:0}
+a{color:var(--a,#FFB547)}a:hover{color:var(--text,#F4EFF9)}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="width:800px;height:360px;background:var(--booth,#1C1726);position:relative;overflow:hidden;font-family:'Be Vietnam Pro',sans-serif;color:var(--text,#F4EFF9);user-select:none;-webkit-user-select:none">
+
+<div style="position:absolute;left:0;right:0;top:0;height:72px;box-sizing:border-box;padding:7px 6px;display:flex;gap:6px;align-items:stretch">
+  <button aria-label="Quay lại" style="width:44px;flex:none;border:0;background:transparent;color:var(--muted,#A89EB8);display:grid;place-items:center;border-radius:12px;cursor:pointer" style-hover="background:var(--panel,#282133)">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"></path></svg>
+  </button>
+  <div style="width:104px;flex:none;display:flex;flex-direction:column;justify-content:center">
+    <button onClick="{{ toggleRec }}" aria-label="{{ recAria }}" style="height:44px;border-radius:12px;background:var(--panel,#282133);border:1.5px solid {{ recBorder }};display:flex;align-items:center;justify-content:center;gap:8px;color:{{ recFg }};cursor:pointer">
+      <span style="width:12px;height:12px;border-radius:50%;box-sizing:border-box;border:2px solid var(--rec,#FF4F61);background:{{ recDot }};animation:{{ recAnim }}"></span>
+      <span style="font:500 14px/18px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.02em">{{ recLabel }}</span>
+    </button>
+    <sc-if value="{{ rec }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:12px;line-height:14px;color:var(--rec,#FF4F61);text-align:center;white-space:nowrap">Đang ghi bản mix</div>
+    </sc-if>
+  </div>
+
+  <div style="flex:1;min-width:0;background:var(--panel,#282133);border-radius:10px;padding:4px 0;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:3px">
+    <sc-for list="{{ waves }}" as="w" hint-placeholder-count="2">
+      <div style="height:18px;position:relative;overflow:hidden">
+        <sc-if value="{{ w.loaded }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;left:50%;top:0;height:18px;width:2432px;margin-left:-320px;animation:md-wave {{ w.dur }}s linear infinite;animation-play-state:{{ w.state }}">
+            <svg width="2432" height="18" style="display:block"><path d="{{ beatPath }}" stroke="var(--line,#3E3550)" stroke-width="1"></path><path d="{{ w.path }}" fill="{{ w.color }}"></path></svg>
+          </div>
+        </sc-if>
+        <sc-if value="{{ w.loop }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:0;bottom:0;left:calc(50% - 48px);width:128px;background:color-mix(in srgb,var(--a,#FFB547) 20%,transparent);border-left:1.5px solid var(--a,#FFB547);border-right:1.5px solid var(--a,#FFB547);box-sizing:border-box"></div>
+        </sc-if>
+        <sc-if value="{{ w.empty }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted,#A89EB8)">Deck {{ w.id }} chưa có bài</div>
+        </sc-if>
+        <div style="position:absolute;left:4px;top:1px;height:16px;padding:0 5px;border-radius:4px;background:var(--panel,#282133);font:600 12px/16px 'Chakra Petch',sans-serif;color:{{ w.color }}">{{ w.id }}</div>
+      </div>
+    </sc-for>
+    <div style="position:absolute;left:0;top:0;width:50%;height:46px;background:var(--dim,rgba(40,33,51,.5));pointer-events:none"></div>
+    <div style="position:absolute;left:50%;top:2px;height:42px;width:2px;margin-left:-1px;background:var(--text,#F4EFF9);border-radius:1px;pointer-events:none"></div>
+    <div style="height:8px;display:flex;gap:10px;padding:0 6px">
+      <sc-for list="{{ overviews }}" as="o" hint-placeholder-count="2">
+        <div role="slider" aria-label="{{ o.aria }}" style="flex:1;position:relative;background:var(--line,#3E3550);border-radius:2px;overflow:hidden;cursor:pointer">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:{{ o.pct }}%;background:{{ o.color }};opacity:.5"></div>
+          <div style="position:absolute;top:0;bottom:0;left:{{ o.pct }}%;width:2px;background:var(--text,#F4EFF9)"></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <button onClick="{{ openLib }}" aria-label="Cài đặt nhanh" style="width:44px;flex:none;border:0;background:transparent;color:var(--muted,#A89EB8);display:grid;place-items:center;border-radius:12px;cursor:pointer" style-hover="background:var(--panel,#282133)">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M19 7h1M4 17h3M13 17h7"></path><circle cx="16" cy="7" r="2.5"></circle><circle cx="10" cy="17" r="2.5"></circle></svg>
+  </button>
+</div>
+
+<div style="position:absolute;left:4px;right:4px;top:72px;bottom:4px;display:grid;grid-template-columns:280px minmax(0,1fr) 280px;grid-template-areas:'a m b';gap:4px">
+  <sc-for list="{{ decks }}" as="d" hint-placeholder-count="2">
+    <div style="grid-area:{{ d.area }};background:var(--panel,#282133);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px;min-width:0;box-sizing:border-box">
+      <div style="height:36px;display:flex;flex-direction:{{ d.dir }};align-items:center;gap:8px">
+        <div style="flex:none;width:24px;height:24px;border-radius:6px;background:{{ d.color }};color:var(--booth,#1C1726);font:600 14px/24px 'Chakra Petch',sans-serif;text-align:center">{{ d.id }}</div>
+        <div style="flex:1;min-width:0;text-align:{{ d.align }}">
+          <div style="font-size:13px;line-height:18px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:{{ d.titleColor }}">{{ d.title }}</div>
+          <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.artist }}</div>
+        </div>
+        <div style="flex:none;display:flex;flex-direction:column;align-items:{{ d.itemsOut }};gap:1px">
+          <div style="display:flex;align-items:baseline;gap:3px"><span style="font:600 22px/22px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;color:{{ d.bpmColor }}">{{ d.bpm }}</span><span style="font-size:12px;color:var(--muted,#A89EB8)">BPM</span></div>
+          <div style="font:500 14px/14px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;color:var(--muted,#A89EB8)">{{ d.time }}</div>
+        </div>
+      </div>
+
+      <div style="height:160px;display:flex;flex-direction:{{ d.dir }};gap:8px;align-items:stretch">
+        <sc-if value="{{ d.jogMode }}" hint-placeholder-val="{{ true }}">
+          <div style="width:40px;flex:none;display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">Pitch</div>
+            <div role="slider" aria-label="{{ d.pitchAria }}" style="flex:1;width:40px;position:relative">
+              <div style="position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--line,#3E3550);border-radius:1px"></div>
+              <div style="position:absolute;left:12px;top:50%;width:16px;height:2px;margin-top:-1px;background:var(--muted,#A89EB8)"></div>
+              <div style="position:absolute;left:6px;width:28px;height:16px;top:calc({{ d.pitchPos }}% - 8px);background:var(--raised,#362D44);border:1px solid var(--line2,#4B4160);border-radius:5px;box-sizing:border-box;display:grid;place-items:center">
+                <div style="width:16px;height:2px;border-radius:1px;background:{{ d.pitchLine }}"></div>
+              </div>
+            </div>
+            <div style="font:500 14px/18px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;color:{{ d.pitchColor }};white-space:nowrap">{{ d.pitchLabel }}</div>
+          </div>
+          <div style="flex:1;display:grid;place-items:center;min-width:0">
+            <div onPointerDown="{{ d.onJogDown }}" onPointerUp="{{ d.onJogUp }}" onPointerLeave="{{ d.onJogUp }}" onClick="{{ d.onJogClick }}" role="button" aria-label="{{ d.jogAria }}" style="width:152px;height:152px;border-radius:50%;position:relative;box-sizing:border-box;border:2px {{ d.rimStyle }} {{ d.rim }};box-shadow:{{ d.touchRing }};background:#211B2B;cursor:pointer;flex:none;touch-action:none">
+              <sc-if value="{{ d.loaded }}" hint-placeholder-val="{{ true }}">
+                <div data-strobe="1" style="position:absolute;inset:0;border-radius:50%;animation:md-spin {{ d.spinDur }}s linear infinite;animation-play-state:{{ d.spin }}">
+                  <div style="position:absolute;inset:12px;border-radius:50%;background:repeating-radial-gradient(circle at center,#1E1828 0 2px,#272031 2px 3px)"></div>
+                  <sc-for list="{{ d.dots }}" as="dot" hint-placeholder-count="0">
+                    <div style="position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:{{ dot.c }};transform:rotate({{ dot.deg }}deg) translateY(-67px)"></div>
+                  </sc-for>
+                  <div style="position:absolute;left:50%;top:50%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:{{ d.labelBg }};box-sizing:border-box;border:2px solid {{ d.vinyl }};display:grid;place-items:center">
+                    <span style="font:600 14px/1 'Chakra Petch',sans-serif;color:{{ d.vinyl }};letter-spacing:.04em">{{ d.initials }}</span>
+                  </div>
+                  <div style="position:absolute;left:50%;top:14px;width:3px;height:18px;margin-left:-1.5px;background:var(--text,#F4EFF9);border-radius:2px"></div>
+                  <div style="position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--booth,#1C1726)"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ d.empty }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted,#A89EB8)">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+                  <div style="font-size:12px;line-height:16px;width:88px;text-align:center">Chạm để chọn bài</div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="width:48px;flex:none;display:flex;flex-direction:column;gap:6px">
+            <div style="background:var(--booth,#1C1726);border-radius:12px;padding:2px;display:flex;flex-direction:column;gap:2px">
+              <button aria-pressed="true" style="height:42px;border-radius:10px;border:0;background:var(--raised,#362D44);color:var(--text,#F4EFF9);font-size:12px;font-weight:500;cursor:pointer">Đĩa</button>
+              <button onClick="{{ d.onPad }}" style="height:42px;border-radius:10px;border:0;background:transparent;color:var(--muted,#A89EB8);font-size:12px;font-weight:500;cursor:pointer">Pad</button>
+            </div>
+            <div style="flex:1"></div>
+            <button onClick="{{ d.onScratch }}" aria-pressed="{{ d.scratch }}" aria-label="Chế độ đĩa (scratch)" style="height:44px;border-radius:12px;box-sizing:border-box;border:1.5px solid {{ d.scrBorder }};background:{{ d.scrBg }};color:{{ d.scrFg }};font-size:12px;font-weight:500;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+              <span style="width:6px;height:6px;border-radius:50%;background:{{ d.scrLed }}"></span>Scratch
+            </button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ d.padMode }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-width:0">
+            <div style="height:40px;display:flex;gap:4px">
+              <button onClick="{{ d.onJog }}" aria-label="Về chế độ đĩa" style="width:44px;flex:none;border-radius:10px;border:0;background:var(--raised,#362D44);color:var(--muted,#A89EB8);display:grid;place-items:center;cursor:pointer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="2.5"></circle></svg>
+              </button>
+              <sc-for list="{{ d.tabs }}" as="t" hint-placeholder-count="4">
+                <button onClick="{{ t.onClick }}" aria-pressed="{{ t.on }}" style="flex:1;min-width:0;border-radius:10px;border:0;background:{{ t.bg }};color:{{ t.fg }};font-size:12px;font-weight:500;cursor:pointer;box-shadow:inset 0 -2px 0 {{ t.bar }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <div style="flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,1fr);gap:6px">
+              <sc-for list="{{ d.pads }}" as="p" hint-placeholder-count="8">
+                <button onClick="{{ p.onClick }}" style="border-radius:10px;box-sizing:border-box;border:1.5px {{ p.bstyle }} {{ p.border }};background:{{ p.bg }};color:{{ p.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;min-width:0;overflow:hidden">
+                  <span style="font-family:{{ p.font }};font-size:{{ p.size }}px;font-weight:600;line-height:18px">{{ p.main }}</span>
+                  <sc-if value="{{ p.hasSub }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:14px;opacity:.85">{{ p.sub }}</span></sc-if>
+                  <sc-if value="{{ p.locked }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:14px;padding:0 4px;border-radius:4px;background:var(--line,#3E3550);color:var(--text,#F4EFF9)">Premium</span></sc-if>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="height:56px;display:flex;flex-direction:{{ d.dir }};gap:6px;opacity:{{ d.btnOpacity }}">
+        <button onClick="{{ d.onPlay }}" aria-label="{{ d.playAria }}" style="flex:1.25;border-radius:12px;border:0;background:{{ d.playBg }};color:{{ d.playFg }};display:grid;place-items:center;cursor:pointer">
+          <sc-if value="{{ d.isPlaying }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1.5"></rect><rect x="13.5" y="5" width="4" height="14" rx="1.5"></rect></svg></sc-if>
+          <sc-if value="{{ d.notPlaying }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l10.6-6.8a1 1 0 0 0 0-1.72L9.5 4.34A1 1 0 0 0 8 5.2z"></path></svg></sc-if>
+        </button>
+        <button style="flex:1;border-radius:12px;box-sizing:border-box;border:1.5px solid var(--line,#3E3550);background:var(--raised,#362D44);color:var(--text,#F4EFF9);font-size:14px;font-weight:600;cursor:pointer">Cue</button>
+        <button onClick="{{ d.onSync }}" aria-pressed="{{ d.sync }}" style="flex:1;border-radius:12px;box-sizing:border-box;border:1.5px solid {{ d.syncBorder }};background:{{ d.syncBg }};color:{{ d.syncFg }};font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
+          <span style="width:6px;height:6px;border-radius:50%;background:{{ d.syncLed }}"></span>Sync
+        </button>
+      </div>
+    </div>
+  </sc-for>
+
+  <div style="grid-area:m;background:var(--panel,#282133);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px;min-width:0">
+    <div style="display:grid;grid-template-columns:44px 22px 8px minmax(0,1fr) 8px 22px 44px;grid-template-rows:repeat(4,44px);column-gap:4px;row-gap:6px;align-items:center">
+      <sc-for list="{{ knobRows }}" as="k" hint-placeholder-count="4">
+        <svg width="44" height="44" viewBox="0 0 44 44" role="img" aria-label="{{ k.a.aria }}" style="grid-column:1;grid-row:{{ k.row }}">
+          <path d="{{ trackArc }}" stroke="var(--line,#3E3550)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <path d="{{ k.a.arc }}" stroke="{{ k.a.arcColor }}" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <circle cx="22" cy="1.2" r="1.2" fill="var(--muted,#A89EB8)"></circle>
+          <circle cx="22" cy="22" r="13" fill="var(--raised,#362D44)" stroke="{{ k.a.body }}" stroke-width="1.2"></circle>
+          <line x1="22" y1="11" x2="22" y2="17" stroke="{{ k.a.ptr }}" stroke-width="2.5" stroke-linecap="round" transform="rotate({{ k.a.deg }} 22 22)"></line>
+        </svg>
+        <div style="grid-column:4;grid-row:{{ k.row }};font-size:12px;line-height:16px;color:var(--muted,#A89EB8);text-align:center">{{ k.label }}</div>
+        <svg width="44" height="44" viewBox="0 0 44 44" role="img" aria-label="{{ k.b.aria }}" style="grid-column:7;grid-row:{{ k.row }}">
+          <path d="{{ trackArc }}" stroke="var(--line,#3E3550)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <path d="{{ k.b.arc }}" stroke="{{ k.b.arcColor }}" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <circle cx="22" cy="1.2" r="1.2" fill="var(--muted,#A89EB8)"></circle>
+          <circle cx="22" cy="22" r="13" fill="var(--raised,#362D44)" stroke="{{ k.b.body }}" stroke-width="1.2"></circle>
+          <line x1="22" y1="11" x2="22" y2="17" stroke="{{ k.b.ptr }}" stroke-width="2.5" stroke-linecap="round" transform="rotate({{ k.b.deg }} 22 22)"></line>
+        </svg>
+      </sc-for>
+      <sc-for list="{{ channels }}" as="c" hint-placeholder-count="2">
+        <div role="slider" aria-label="{{ c.faderAria }}" style="grid-column:{{ c.faderCol }};grid-row:1 / 5;position:relative;height:100%">
+          <div style="position:absolute;left:10px;top:4px;bottom:4px;width:2px;background:var(--line,#3E3550);border-radius:1px"></div>
+          <div style="position:absolute;left:0;width:22px;height:30px;top:{{ c.faderTop }}px;background:var(--raised,#362D44);border:1px solid var(--line2,#4B4160);border-radius:5px;box-sizing:border-box;display:grid;place-items:center"><div style="width:12px;height:2px;background:var(--text,#F4EFF9);border-radius:1px"></div></div>
+        </div>
+        <div style="grid-column:{{ c.vuCol }};grid-row:1 / 5;height:100%;position:relative;background:var(--line,#3E3550);border-radius:2px;overflow:hidden">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,{{ c.color }} 0 88%,var(--rec,#FF4F61) 88% 100%)"></div>
+          <div style="position:absolute;left:0;right:0;top:0;height:100%;transform-origin:top;background:var(--line,#3E3550);animation:{{ c.vuAnim }};transform:scaleY(.98)"></div>
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(to top,transparent 0 5px,var(--panel,#282133) 5px 7px)"></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:2px">
+      <div style="font-size:12px;line-height:14px;color:var(--muted,#A89EB8);text-align:center">Crossfader</div>
+      <div style="height:44px;display:flex;align-items:center;gap:6px">
+        <span style="width:14px;font:600 14px/1 'Chakra Petch',sans-serif;color:var(--a,#FFB547);text-align:center">A</span>
+        <div ref="{{ xfRef }}" onPointerDown="{{ xfDown }}" onPointerMove="{{ xfMove }}" onPointerUp="{{ xfUp }}" onDoubleClick="{{ xfReset }}" role="slider" aria-label="{{ xfAria }}" style="flex:1;height:44px;position:relative;cursor:grab;touch-action:none">
+          <div style="position:absolute;left:0;right:0;top:20px;height:4px;border-radius:2px;background:linear-gradient(to right,color-mix(in srgb,var(--a,#FFB547) 55%,transparent) 0 50%,color-mix(in srgb,var(--b,#45D4C4) 55%,transparent) 50% 100%)"></div>
+          <div style="position:absolute;left:50%;top:14px;width:2px;height:16px;margin-left:-1px;background:var(--muted,#A89EB8)"></div>
+          <div style="position:absolute;top:8px;width:36px;height:28px;left:calc({{ xfPct }}% - {{ xfOff }}px);background:var(--raised,#362D44);border:1px solid var(--line2,#4B4160);border-radius:8px;box-sizing:border-box;display:grid;place-items:center"><div style="width:2px;height:14px;background:var(--text,#F4EFF9);border-radius:1px"></div></div>
+        </div>
+        <span style="width:14px;font:600 14px/1 'Chakra Petch',sans-serif;color:var(--b,#45D4C4);text-align:center">B</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<sc-if value="{{ fx }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeFx }}" style="position:absolute;inset:0;background:rgba(28,23,38,.6)"></div>
+  <div style="position:absolute;left:40px;right:40px;bottom:0;height:308px;background:var(--panel,#282133);border:1px solid var(--line,#3E3550);border-bottom:0;border-radius:24px 24px 0 0;box-sizing:border-box;padding:8px 20px 16px;display:flex;flex-direction:column;gap:8px">
+    <div style="width:36px;height:4px;border-radius:2px;background:var(--line,#3E3550);align-self:center;flex:none"></div>
+    <div style="flex:1;display:flex;gap:20px;min-height:0">
+      <div style="width:248px;flex:none;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:24px;height:24px;border-radius:6px;background:var(--a,#FFB547);color:var(--booth,#1C1726);font:600 14px/24px 'Chakra Petch',sans-serif;text-align:center;flex:none">A</div>
+          <div style="flex:1;font-size:18px;line-height:24px;font-weight:600">Echo</div>
+          <div role="switch" aria-checked="true" aria-label="Bật Echo" style="width:44px;height:26px;border-radius:13px;background:var(--a,#FFB547);position:relative;flex:none"><div style="position:absolute;right:3px;top:3px;width:20px;height:20px;border-radius:50%;background:var(--booth,#1C1726)"></div></div>
+          <button onClick="{{ closeFx }}" aria-label="Đóng" style="width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:var(--muted,#A89EB8);display:grid;place-items:center;cursor:pointer;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg width="52" height="52" viewBox="0 0 44 44" role="img" aria-label="Wet/Dry Echo, 60%">
+            <path d="{{ trackArc }}" stroke="var(--line,#3E3550)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="{{ fxArc }}" stroke="var(--a,#FFB547)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <circle cx="22" cy="22" r="13" fill="var(--raised,#362D44)" stroke="var(--line2,#4B4160)" stroke-width="1.2"></circle>
+            <line x1="22" y1="11" x2="22" y2="17" stroke="var(--text,#F4EFF9)" stroke-width="2.5" stroke-linecap="round" transform="rotate(27 22 22)"></line>
+          </svg>
+          <div><div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">Wet/Dry</div><div style="font:500 14px/18px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums">60%</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">Độ dài theo beat</div>
+          <div style="display:flex;gap:4px">
+            <sc-for list="{{ fxLens }}" as="fl" hint-placeholder-count="5">
+              <div style="flex:1;height:44px;border-radius:10px;background:{{ fl.bg }};color:{{ fl.fg }};display:grid;place-items:center;font:600 14px 'Chakra Petch',sans-serif">{{ fl.l }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:1"></div>
+        <button style="height:44px;border-radius:12px;border:1.5px solid var(--line,#3E3550);background:transparent;color:var(--text,#F4EFF9);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v4h4"></path></svg>Đặt lại
+        </button>
+      </div>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:12px;line-height:16px;color:var(--muted,#A89EB8)"><span>Kéo để chỉnh</span><span style="font:500 14px/18px 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;color:var(--text,#F4EFF9)">{{ fxReadout }}</span></div>
+        <div ref="{{ fxRef }}" onPointerDown="{{ fxDown }}" onPointerMove="{{ fxMove }}" onPointerUp="{{ fxUp }}" role="slider" aria-label="XY pad Echo" style="flex:1;position:relative;border-radius:16px;background-color:var(--booth,#1C1726);background-image:linear-gradient(var(--grid,#2A2335) 1px,transparent 1px),linear-gradient(90deg,var(--grid,#2A2335) 1px,transparent 1px);background-size:25% 25%;border:1px solid var(--line,#3E3550);overflow:hidden;touch-action:none;cursor:crosshair">
+          <div style="position:absolute;left:0;bottom:0;width:{{ fxLeft }}%;height:{{ fxFill }}%;background:color-mix(in srgb,var(--a,#FFB547) 12%,transparent)"></div>
+          <div style="position:absolute;top:0;bottom:0;left:{{ fxLeft }}%;width:1px;background:color-mix(in srgb,var(--a,#FFB547) 60%,transparent)"></div>
+          <div style="position:absolute;left:0;right:0;top:{{ fxTop }}%;height:1px;background:color-mix(in srgb,var(--a,#FFB547) 60%,transparent)"></div>
+          <div style="position:absolute;left:{{ fxLeft }}%;top:{{ fxTop }}%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--a,#FFB547);border:3px solid var(--booth,#1C1726);box-shadow:0 0 0 2px var(--a,#FFB547);box-sizing:border-box"></div>
+          <div style="position:absolute;left:12px;top:8px;font-size:12px;color:var(--muted,#A89EB8)">↑ Độ mạnh</div>
+          <div style="position:absolute;right:12px;bottom:8px;font-size:12px;color:var(--muted,#A89EB8)">Thời gian →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ save }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:rgba(28,23,38,.7)"></div>
+  <div role="dialog" aria-label="Lưu bản mix" style="position:absolute;left:50%;top:50%;width:400px;margin-left:-200px;transform:translateY(-50%);background:var(--panel,#282133);border:1px solid var(--line,#3E3550);border-radius:20px;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-size:18px;line-height:24px;font-weight:600">Lưu bản mix</div><div style="font:500 14px 'Chakra Petch',sans-serif;color:var(--muted,#A89EB8);font-variant-numeric:tabular-nums">{{ saveDur }}</div></div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">Tên</div>
+      <div style="height:44px;border-radius:12px;background:var(--booth,#1C1726);border:1.5px solid var(--text,#F4EFF9);display:flex;align-items:center;padding:0 12px;font-size:14px">Mix 25-09 21:40<span style="width:1.5px;height:18px;background:var(--text,#F4EFF9);margin-left:1px"></span></div>
+    </div>
+    <div style="display:flex;gap:12px">
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">Định dạng</div>
+        <div style="display:flex;gap:4px;background:var(--booth,#1C1726);border-radius:12px;padding:2px">
+          <button onClick="{{ pickMp3 }}" style="flex:1;height:40px;border:0;border-radius:10px;background:{{ fmtMp3Bg }};color:{{ fmtMp3Fg }};font-size:14px;font-weight:600;cursor:pointer">MP3</button>
+          <button onClick="{{ pickWav }}" style="flex:1;height:40px;border:0;border-radius:10px;background:{{ fmtWavBg }};color:{{ fmtWavFg }};font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">WAV</button>
+        </div>
+      </div>
+      <div style="width:132px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">Chất lượng</div>
+        <div style="height:44px;border-radius:12px;background:var(--raised,#362D44);display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:14px">320 kbps<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted,#A89EB8)" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+      </div>
+    </div>
+    <sc-if value="{{ wavNote }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8)">WAV không nén, tệp lớn hơn MP3 khoảng 4 lần.</div>
+    </sc-if>
+    <div style="display:flex;justify-content:flex-end;gap:8px">
+      <button onClick="{{ closeSave }}" style="height:44px;padding:0 16px;border:0;border-radius:12px;background:transparent;color:var(--text,#F4EFF9);font-size:14px;font-weight:600;cursor:pointer">Bỏ</button>
+      <button onClick="{{ closeSave }}" style="height:44px;padding:0 18px;border:0;border-radius:12px;background:var(--text,#F4EFF9);color:var(--booth,#1C1726);font-size:14px;font-weight:600;cursor:pointer">Lưu bản mix</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ coach }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;left:516px;top:286px;width:90px;height:68px;border-radius:16px;box-shadow:0 0 0 2px var(--text,#F4EFF9),0 0 0 2000px rgba(20,16,25,.78);pointer-events:none"></div>
+  <div style="position:absolute;left:296px;top:92px;width:256px;background:var(--text,#F4EFF9);color:var(--booth,#1C1726);border-radius:16px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 14px 'Chakra Petch',sans-serif">Bước 3/5</span>
+      <span style="display:flex;gap:4px"><span style="width:16px;height:4px;border-radius:2px;background:var(--booth,#1C1726)"></span><span style="width:16px;height:4px;border-radius:2px;background:var(--booth,#1C1726)"></span><span style="width:16px;height:4px;border-radius:2px;background:var(--booth,#1C1726)"></span><span style="width:16px;height:4px;border-radius:2px;background:var(--inv-dim,#C9C1D4)"></span><span style="width:16px;height:4px;border-radius:2px;background:var(--inv-dim,#C9C1D4)"></span></span>
+    </div>
+    <sc-if value="{{ coachTodo }}" hint-placeholder-val="{{ true }}">
+      <div style="font-size:16px;line-height:22px;font-weight:600">Chạm Sync ở Deck B</div>
+      <div style="font-size:14px;line-height:20px;color:var(--inv-muted,#4A4158)">Sync chỉnh tốc độ Deck B cho khớp nhịp Deck A đang phát.</div>
+    </sc-if>
+    <sc-if value="{{ coachDone }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:16px;line-height:22px;font-weight:600">Hai bài đã chung nhịp</div>
+      <div style="font-size:14px;line-height:20px;color:var(--inv-muted,#4A4158)">BPM Deck B giờ bằng Deck A. Tiếp theo: bấm Play ở Deck B.</div>
+    </sc-if>
+    <div style="display:flex;justify-content:flex-end;gap:4px">
+      <button onClick="{{ closeCoach }}" style="height:44px;padding:0 12px;border:0;border-radius:12px;background:transparent;color:var(--booth,#1C1726);font-size:14px;font-weight:600;cursor:pointer">Bỏ qua</button>
+      <button style="height:44px;padding:0 18px;border:0;border-radius:12px;background:var(--booth,#1C1726);color:var(--text,#F4EFF9);font-size:14px;font-weight:600;cursor:pointer">Tiếp</button>
+    </div>
+    <div style="position:absolute;left:218px;bottom:-6px;width:12px;height:12px;background:var(--text,#F4EFF9);transform:rotate(45deg)"></div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ lib }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeLib }}" style="position:absolute;inset:0;background:rgba(28,23,38,.55)"></div>
+  <div style="position:absolute;top:0;right:0;bottom:0;width:480px;background:var(--panel,#282133);border-left:1px solid var(--line,#3E3550);border-radius:24px 0 0 24px;display:flex;flex-direction:column;padding:10px 16px 0 16px;box-sizing:border-box;gap:8px">
+    <div style="height:36px;display:flex;align-items:center;gap:8px">
+      <div style="font:600 18px/24px 'Be Vietnam Pro',sans-serif;flex:1">Chọn bài cho Deck {{ libTarget }}</div>
+      <button onClick="{{ closeLib }}" aria-label="Đóng thư viện" style="width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:var(--muted,#A89EB8);display:grid;place-items:center;cursor:pointer" style-hover="background:var(--raised,#362D44)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <div style="display:flex;gap:8px">
+      <div style="flex:1;height:40px;border-radius:12px;background:var(--booth,#1C1726);border:1px solid var(--line,#3E3550);display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--muted,#A89EB8);font-size:14px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg>Tìm bài hát, nghệ sĩ
+      </div>
+      <div style="height:40px;border-radius:12px;background:var(--raised,#362D44);display:flex;align-items:center;gap:6px;padding:0 12px;font-size:12px;font-weight:500;white-space:nowrap">Sắp xếp: BPM
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+      </div>
+    </div>
+    <div style="display:flex;gap:6px">
+      <sc-for list="{{ libTabs }}" as="lt" hint-placeholder-count="5">
+        <div style="height:28px;padding:0 12px;border-radius:14px;display:flex;align-items:center;font-size:12px;font-weight:500;background:{{ lt.bg }};color:{{ lt.fg }}">{{ lt.label }}</div>
+      </sc-for>
+    </div>
+    <div style="flex:1;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;display:flex;flex-direction:column;min-width:0">
+      <sc-for list="{{ libRows }}" as="r" hint-placeholder-count="5">
+        <div style="min-height:52px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line,#3E3550)">
+          <div style="width:36px;height:36px;border-radius:6px;flex:none;background:{{ r.cover }};display:grid;place-items:center;font:600 12px 'Chakra Petch',sans-serif;color:var(--text,#F4EFF9)">{{ r.ini }}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.title }}</div>
+            <div style="font-size:12px;line-height:16px;color:var(--muted,#A89EB8);display:flex;gap:6px;align-items:center;white-space:nowrap;overflow:hidden"><span style="overflow:hidden;text-overflow:ellipsis;min-width:0">{{ r.artist }}</span><span style="flex:none">· {{ r.dur }}</span></div>
+          </div>
+          <div style="flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+            <div style="min-width:52px;height:24px;padding:0 8px;box-sizing:border-box;border-radius:6px;background:{{ r.badgeBg }};border:1px solid {{ r.badgeBorder }};display:flex;align-items:center;justify-content:center;gap:3px"><span style="font:600 13px/1 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;color:{{ r.badgeFg }}">{{ r.bpm }}</span><span style="font-size:12px;color:{{ r.badgeFg }}">BPM</span></div>
+            <sc-if value="{{ r.match }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;line-height:14px;color:var(--a,#FFB547);white-space:nowrap">Hợp nhịp A</span></sc-if>
+          </div>
+          <button onClick="{{ r.onA }}" aria-label="Nạp vào Deck A" style="width:44px;height:44px;flex:none;border-radius:12px;border:1.5px solid var(--a,#FFB547);background:transparent;color:var(--a,#FFB547);font:600 14px 'Chakra Petch',sans-serif;cursor:pointer" style-hover="background:var(--a,#FFB547);color:var(--booth,#1C1726)">A</button>
+          <button onClick="{{ r.onB }}" aria-label="Nạp vào Deck B" style="width:44px;height:44px;flex:none;border-radius:12px;border:1.5px solid var(--b,#45D4C4);background:transparent;color:var(--b,#45D4C4);font:600 14px 'Chakra Petch',sans-serif;cursor:pointer" style-hover="background:var(--b,#45D4C4);color:var(--booth,#1C1726)">B</button>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:800,&quot;height&quot;:360},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;play&quot;,&quot;pad&quot;,&quot;library&quot;,&quot;fx&quot;,&quot;save&quot;,&quot;coach&quot;],&quot;default&quot;:&quot;play&quot;,&quot;tsType&quot;:&quot;'play'|'pad'|'library'|'fx'|'save'|'coach'&quot;}}">
+class Component extends DCLogic {
+  state = this.init();
+  xfRef = React.createRef();
+  waveA = this.gen(7); waveB = this.gen(29); beat = this.beatPath();
+  TR = {
+    a: { title: 'Sài Gòn lên đèn', artist: 'Mây Tầng Thượng', bpm: 124, time: '−02:31', ini: 'SG', pos: 41, labelBg: '#3A2C1E' },
+    b: { title: 'Mưa sao băng (Club mix)', artist: 'Đèn Neon', bpm: 128, time: '−03:10', ini: 'MS', pos: 14, labelBg: '#1B3432' },
+  };
+  LIB = [
+    { title: 'Chạy về phía biển', artist: 'Vy Hạ', bpm: 122, dur: '03:48', cover: '#4A3B5E' },
+    { title: 'Không cần lời', artist: 'DJ Tâm', bpm: 125, dur: '05:02', cover: '#3B4A5E' },
+    { title: 'Tầng thượng 102', artist: 'Cáo Nhỏ', bpm: 126, dur: '04:40', cover: '#5E3B4A' },
+    { title: 'Mưa sao băng (Club mix)', artist: 'Đèn Neon', bpm: 128, dur: '04:26', cover: '#2E4E4A' },
+    { title: 'Phố đêm', artist: 'Hạ Vũ', bpm: null, dur: '03:31', cover: '#4E452E' },
+    { title: 'Tết về rồi', artist: 'Nhóm Mùa Xuân', bpm: 100, dur: '03:15', cover: '#5E4A3B' },
+  ];
+  init() {
+    const v = this.props.variant || 'play';
+    const deck = (o) => Object.assign({ track: null, playing: false, sync: false, mode: 'jog', tab: 'cue', scratch: true, touch: false }, o);
+    if (v === 'pad') return { a: deck({ track: 'a', playing: true, mode: 'pad', tab: 'cue' }), b: deck({ track: 'b' }), xf: 0.3, rec: true, recSec: 222, lib: false, libTarget: 'B' };
+    const base = { xf: 0.4, rec: false, recSec: 0, lib: false, libTarget: 'B', fxX: 0.62, fxY: 0.3, fmt: 'mp3' };
+    if (v === 'fx') return Object.assign(base, { a: deck({ track: 'a', playing: true, mode: 'pad', tab: 'fx' }), b: deck({ track: 'b' }), fx: true });
+    if (v === 'save') return Object.assign(base, { a: deck({ track: 'a', playing: true }), b: deck({ track: 'b', playing: true, sync: true }), save: true, recSec: 222 });
+    if (v === 'coach') return Object.assign(base, { a: deck({ track: 'a', playing: true }), b: deck({ track: 'b' }), xf: 0.2, coach: true });
+    if (v === 'library') return { a: deck({ track: 'a', playing: true }), b: deck({}), xf: 0.2, rec: false, recSec: 0, lib: true, libTarget: 'B' };
+    return { a: deck({ track: 'a', playing: true }), b: deck({ track: 'b', playing: true, sync: true }), xf: 0.36, rec: false, recSec: 0, lib: false, libTarget: 'B', loopA: true };
+  }
+  rootRef = React.createRef();
+  THEMES = {
+    dark: { booth: '#1C1726', panel: '#282133', raised: '#362D44', line: '#3E3550', line2: '#4B4160', text: '#F4EFF9', muted: '#A89EB8', a: '#FFB547', b: '#45D4C4', rec: '#FF4F61', grid: '#2A2335', dim: 'rgba(40,33,51,.5)', 'inv-muted': '#4A4158', 'inv-dim': '#C9C1D4' },
+    light: { booth: '#EEEAF4', panel: '#FBFAFD', raised: '#E2DCEB', line: '#D2CADD', line2: '#B9AECA', text: '#1F1829', muted: '#5E5475', a: '#A35F00', b: '#08786D', rec: '#C8243A', grid: '#E6E0EE', dim: 'rgba(251,250,253,.55)', 'inv-muted': '#C4BAD3', 'inv-dim': '#5E5475' },
+  };
+  applyTheme() { const el = this.rootRef.current; if (!el) return; const t = this.THEMES[this.props.theme === 'light' ? 'light' : 'dark']; for (const k in t) el.style.setProperty('--' + k, t[k]); }
+  componentDidUpdate() { this.applyTheme(); }
+  componentDidMount() { this.applyTheme(); this.timer = setInterval(() => { if (this.state.rec) this.setState(s => ({ recSec: s.recSec + 1 })); }, 1000); }
+  componentWillUnmount() { clearInterval(this.timer); }
+  gen(seed) {
+    let s = seed; const r = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+    const h = [];
+    for (let i = 0; i < 304; i++) {
+      const k = i % 8, env = 0.55 + 0.35 * Math.sin(i / 304 * Math.PI * 6 + seed);
+      h.push(Math.max(1, Math.min(8, (k === 0 ? 1 : k === 1 ? 0.8 : 0.28 + 0.5 * r()) * env * 9)));
+    }
+    let d = '';
+    for (let c = 0; c < 2; c++) h.forEach((v, i) => { d += `M${c * 1216 + i * 4} ${(9 - v).toFixed(1)}h3v${(2 * v).toFixed(1)}h-3z`; });
+    return d;
+  }
+  beatPath() { let d = ''; for (let x = 0; x < 2432; x += 32) d += `M${x + 0.5} 0v18`; return d; }
+  P(a, r = 18, c = 22) { const t = a * Math.PI / 180; return `${(c + r * Math.sin(t)).toFixed(2)} ${(c - r * Math.cos(t)).toFixed(2)}`; }
+  arc(v) {
+    const a1 = (v - 0.5) * 270; if (Math.abs(a1) < 2) return '';
+    const s = Math.min(0, a1), e = Math.max(0, a1);
+    return `M${this.P(s)}A18 18 0 ${e - s > 180 ? 1 : 0} 1 ${this.P(e)}`;
+  }
+  knob(v, color, label, deck) {
+    const kill = v === 'kill', val = kill ? 0 : v;
+    return { deg: (val - 0.5) * 270, arc: this.arc(val), arcColor: kill ? 'var(--rec,#FF4F61)' : color, ptr: kill ? 'var(--rec,#FF4F61)' : 'var(--text,#F4EFF9)', body: kill ? 'var(--rec,#FF4F61)' : 'var(--line2,#4B4160)', aria: `EQ ${label} Deck ${deck}, ${kill ? 'kill' : Math.round(val * 100) + '%'}` };
+  }
+  setDeck(k, patch) { this.setState(s => ({ [k]: Object.assign({}, s[k], typeof patch === 'function' ? patch(s[k]) : patch) })); }
+  pads(tab, color, k) {
+    const on = { bg: `color-mix(in srgb,${color} 18%,transparent)`, border: color, fg: color, bstyle: 'solid' };
+    const off = { bg: 'var(--raised,#362D44)', border: 'var(--raised,#362D44)', fg: 'var(--muted,#A89EB8)', bstyle: 'solid' };
+    const lock = { bg: 'var(--panel,#282133)', border: 'var(--line,#3E3550)', fg: 'var(--muted,#A89EB8)', bstyle: 'dashed' };
+    const num = "'Chakra Petch',sans-serif", ui = "'Be Vietnam Pro',sans-serif";
+    const mk = (st, main, sub, font, size, locked) => Object.assign({}, st, { main, sub: sub || '', hasSub: !!sub, font, size, locked: !!locked, onClick: () => {} });
+    if (tab === 'cue') return [1, 2, 3, 4, 5, 6, 7, 8].map(n => n <= 3 ? mk(on, n, ['0:32', '1:04', '2:08'][n - 1], num, 18) : mk(off, n, 'Trống', num, 18));
+    if (tab === 'loop') return ['1/4', '1/2', '1', '2', '4', '8', '16', 'In/Out'].map((l, i) => mk(i === 4 ? on : off, l, i < 7 ? 'beat' : '', num, i < 7 ? 18 : 14));
+    if (tab === 'fx') return ['Echo', 'Flanger', 'Bitcrush', 'Gate', 'Reverb', 'Phaser', 'Roll', 'Brake'].map((l, i) => mk(i === 0 ? on : off, l, '', ui, 12));
+    const neu = { bg: 'color-mix(in srgb,var(--text,#F4EFF9) 12%,transparent)', border: 'var(--text,#F4EFF9)', fg: 'var(--text,#F4EFF9)', bstyle: 'solid' };
+    return ['Còi hơi', 'Scratch', 'Drop', 'Vỗ tay', 'Siren', 'Đám đông', 'Laser', 'Rewind'].map((l, i) => mk(i === 3 ? neu : off, l, '', ui, 12));
+  }
+  deckVals(k) {
+    const s = this.state[k], id = k.toUpperCase(), color = k === 'a' ? 'var(--a,#FFB547)' : 'var(--b,#45D4C4)', t = s.track ? this.TR[s.track] : null;
+    const other = this.state[k === 'a' ? 'b' : 'a'], otherT = other.track ? this.TR[other.track] : null;
+    const pitch = t && s.sync && otherT ? (otherT.bpm / t.bpm - 1) * 100 : 0;
+    const bpm = t ? t.bpm * (1 + pitch / 100) : 0, loaded = !!t, playing = loaded && s.playing;
+    const dots = []; for (let i = 0; i < 36; i++) dots.push({ deg: i * 10, c: playing ? color : 'var(--line,#3E3550)' });
+    const tabs = [['cue', 'Cue'], ['loop', 'Loop'], ['fx', 'FX'], ['sampler', 'Sampler']].map(([key, label]) => ({ label, on: s.tab === key, bg: s.tab === key ? 'var(--raised,#362D44)' : 'transparent', fg: s.tab === key ? color : 'var(--muted,#A89EB8)', bar: s.tab === key ? color : 'transparent', onClick: () => this.setDeck(k, { tab: key }) }));
+    const sign = pitch > 0.05 ? '+' : pitch < -0.05 ? '−' : '+';
+    return {
+      id, area: k, dir: k === 'a' ? 'row' : 'row-reverse', align: k === 'a' ? 'left' : 'right', itemsOut: k === 'a' ? 'flex-end' : 'flex-start', color,
+      loaded, empty: !loaded, title: t ? t.title : 'Chưa có bài', titleColor: t ? 'var(--text,#F4EFF9)' : 'var(--muted,#A89EB8)', artist: t ? t.artist : 'Chạm đĩa để chọn', bpm: t ? bpm.toFixed(1) : '—', time: t ? t.time : '−−:−−',
+      bpmColor: s.sync && loaded ? color : 'var(--text,#F4EFF9)',
+      jogMode: s.mode === 'jog', padMode: s.mode === 'pad', tabs, pads: this.pads(s.tab, color, k),
+      pitchPos: 50 - pitch / 8 * 50, pitchLabel: sign + Math.abs(pitch).toFixed(1) + '%', pitchColor: Math.abs(pitch) > 0.05 ? 'var(--text,#F4EFF9)' : 'var(--muted,#A89EB8)', pitchLine: Math.abs(pitch) > 0.05 ? color : 'var(--text,#F4EFF9)', pitchAria: `Pitch Deck ${id}, ${pitch.toFixed(1)}%`,
+      rim: loaded ? color : 'var(--line,#3E3550)', rimStyle: loaded ? 'solid' : 'dashed', touchRing: s.touch && loaded ? `0 0 0 4px color-mix(in srgb,${color} 33%,transparent)` : 'none',
+      spin: playing && !(s.touch && s.scratch) ? 'running' : 'paused', spinDur: (1.8 / (1 + pitch / 100)).toFixed(3), dots, labelBg: t ? t.labelBg : 'var(--panel,#282133)', vinyl: k === 'a' ? '#FFB547' : '#45D4C4', initials: t ? t.ini : '',
+      jogAria: loaded ? `Jog wheel Deck ${id}` : `Deck ${id} trống, chạm để chọn bài`,
+      onJogDown: () => loaded && this.setDeck(k, { touch: true }), onJogUp: () => s.touch && this.setDeck(k, { touch: false }),
+      onJogClick: () => { if (!loaded) this.setState({ lib: true, libTarget: id }); },
+      scratch: s.scratch, scrBorder: s.scratch ? color : 'var(--raised,#362D44)', scrBg: s.scratch ? 'transparent' : 'var(--raised,#362D44)', scrFg: s.scratch ? color : 'var(--muted,#A89EB8)', scrLed: s.scratch ? color : 'var(--line,#3E3550)',
+      onScratch: () => this.setDeck(k, x => ({ scratch: !x.scratch })), onPad: () => this.setDeck(k, { mode: 'pad' }), onJog: () => this.setDeck(k, { mode: 'jog' }),
+      btnOpacity: loaded ? 1 : 0.35, isPlaying: playing, notPlaying: !playing, playAria: playing ? `Tạm dừng Deck ${id}` : `Phát Deck ${id}`,
+      playBg: playing ? color : 'var(--raised,#362D44)', playFg: playing ? 'var(--booth,#1C1726)' : 'var(--text,#F4EFF9)',
+      onPlay: () => loaded && this.setDeck(k, x => ({ playing: !x.playing })), onSync: () => loaded && this.setDeck(k, x => ({ sync: !x.sync })),
+      sync: s.sync, syncBorder: s.sync ? color : 'var(--line,#3E3550)', syncBg: s.sync ? `color-mix(in srgb,${color} 12%,transparent)` : 'var(--raised,#362D44)', syncFg: s.sync ? color : 'var(--muted,#A89EB8)', syncLed: s.sync ? color : 'var(--line,#3E3550)',
+      _playing: playing, _pitch: pitch, _bpm: bpm, _t: t,
+    };
+  }
+  fxRef = React.createRef();
+  fxSet(e) { const r = this.fxRef.current.getBoundingClientRect(), c = v => Math.max(0, Math.min(1, v)); this.setState({ fxX: c((e.clientX - r.left) / r.width), fxY: c((e.clientY - r.top) / r.height) }); }
+  xfSet(e) { const r = this.xfRef.current.getBoundingClientRect(); this.setState({ xf: Math.max(0, Math.min(1, (e.clientX - r.left - 18) / (r.width - 36))) }); }
+  renderVals() {
+    const s = this.state, A = this.deckVals('a'), B = this.deckVals('b');
+    const mm = n => String(Math.floor(n / 60)).padStart(2, '0') + ':' + String(n % 60).padStart(2, '0');
+    const wave = (D, path, loop) => ({ id: D.id, color: D.color, loaded: D.loaded, empty: !D.loaded, path, loop: loop && D._playing, state: D._playing ? 'running' : 'paused', dur: D._t ? (1216 / (32 * D._bpm / 60)).toFixed(2) : 10 });
+    const eqA = [0.5, 0.56, 0.42, 0.5], eqB = s.b.track ? [0.6, 0.5, 'kill', 0.64] : [0.5, 0.5, 0.5, 0.5];
+    const labels = ['High', 'Mid', 'Low', 'Filter'];
+    const volA = 0.86, volB = 0.72;
+    return {
+      rootRef: this.rootRef, decks: [A, B], beatPath: this.beat, trackArc: `M${this.P(-135)}A18 18 0 1 1 ${this.P(135)}`,
+      waves: [wave(A, this.waveA, s.loopA), wave(B, this.waveB, false)],
+      overviews: [A, B].map(D => ({ color: D.color, pct: D._t ? D._t.pos : 0, aria: `Tổng quan bài Deck ${D.id}` })),
+      knobRows: labels.map((l, i) => ({ label: l, row: i + 1, a: this.knob(eqA[i], 'var(--a,#FFB547)', l, 'A'), b: this.knob(eqB[i], 'var(--b,#45D4C4)', l, 'B') })),
+      channels: [
+        { faderCol: 2, vuCol: 3, color: 'var(--a,#FFB547)', faderTop: Math.round((1 - volA) * 164), faderAria: `Âm lượng Deck A, ${volA * 100}%`, vuAnim: A._playing ? 'md-vu .9s ease-in-out infinite' : 'none' },
+        { faderCol: 6, vuCol: 5, color: 'var(--b,#45D4C4)', faderTop: Math.round((1 - volB) * 164), faderAria: `Âm lượng Deck B, ${volB * 100}%`, vuAnim: B._playing ? 'md-vu 1.07s ease-in-out -.3s infinite' : 'none' },
+      ],
+      xfRef: this.xfRef, xfPct: (s.xf * 100).toFixed(2), xfOff: (s.xf * 36).toFixed(2), xfAria: `Crossfader, ${Math.round(s.xf * 100)}% về phía B`,
+      xfDown: e => { e.currentTarget.setPointerCapture(e.pointerId); this.dragging = true; this.xfSet(e); },
+      xfMove: e => { if (this.dragging) this.xfSet(e); }, xfUp: () => { this.dragging = false; }, xfReset: () => this.setState({ xf: 0.5 }),
+      rec: s.rec, recLabel: s.rec ? mm(s.recSec) : 'REC', recAria: s.rec ? 'Dừng ghi bản mix' : 'Ghi bản mix', recBorder: s.rec ? 'var(--rec,#FF4F61)' : 'var(--panel,#282133)', recFg: s.rec ? 'var(--rec,#FF4F61)' : 'var(--text,#F4EFF9)', recDot: s.rec ? 'var(--rec,#FF4F61)' : 'transparent', recAnim: s.rec ? 'md-blink 1s steps(1) infinite' : 'none',
+      toggleRec: () => this.setState(x => ({ rec: !x.rec, recSec: x.rec ? 0 : x.recSec })),
+      fx: !!s.fx, fxRef: this.fxRef, fxLeft: ((s.fxX ?? .6) * 100).toFixed(1), fxTop: ((s.fxY ?? .3) * 100).toFixed(1), fxFill: ((1 - (s.fxY ?? .3)) * 100).toFixed(1),
+      fxReadout: `${['1/16', '1/8', '1/4', '1/2', '3/4', '1'][Math.min(5, Math.floor((s.fxX ?? .6) * 6))]} beat · ${Math.round((1 - (s.fxY ?? .3)) * 100)}%`,
+      fxDown: e => { e.currentTarget.setPointerCapture(e.pointerId); this.fxDrag = true; this.fxSet(e); }, fxMove: e => { if (this.fxDrag) this.fxSet(e); }, fxUp: () => { this.fxDrag = false; },
+      fxArc: this.arc(0.6), fxDeg: 27, closeFx: () => this.setState({ fx: false }), fxLens: ['1/4', '1/2', '1', '2', '4'].map((l, i) => ({ l, bg: i === 2 ? 'var(--a,#FFB547)' : 'var(--raised,#362D44)', fg: i === 2 ? 'var(--booth,#1C1726)' : 'var(--muted,#A89EB8)' })),
+      save: !!s.save, closeSave: () => this.setState({ save: false }), saveDur: mm(s.recSec),
+      fmtMp3Bg: s.fmt === 'mp3' ? 'var(--text,#F4EFF9)' : 'var(--raised,#362D44)', fmtMp3Fg: s.fmt === 'mp3' ? 'var(--booth,#1C1726)' : 'var(--muted,#A89EB8)', fmtWavBg: s.fmt === 'wav' ? 'var(--text,#F4EFF9)' : 'var(--raised,#362D44)', fmtWavFg: s.fmt === 'wav' ? 'var(--booth,#1C1726)' : 'var(--muted,#A89EB8)',
+      wavNote: s.fmt === 'wav', pickMp3: () => this.setState({ fmt: 'mp3' }), pickWav: () => this.setState({ fmt: 'wav' }),
+      coach: !!s.coach, coachTodo: !!s.coach && !s.b.sync, coachDone: !!s.coach && s.b.sync, closeCoach: () => this.setState({ coach: false }),
+      lib: s.lib, libTarget: s.libTarget, openLib: () => {}, closeLib: () => this.setState({ lib: false }),
+      libTabs: ['Bài hát', 'Playlist', 'Album', 'Nghệ sĩ', 'Thư mục'].map((l, i) => ({ label: l, bg: i === 0 ? 'var(--text,#F4EFF9)' : 'var(--raised,#362D44)', fg: i === 0 ? 'var(--booth,#1C1726)' : 'var(--muted,#A89EB8)' })),
+      libRows: this.LIB.map(r => {
+        const ref = A._t ? A._bpm : null, match = ref && r.bpm && Math.abs(r.bpm / ref - 1) <= 0.03 && s.libTarget === 'B';
+        const load = key => () => { this.TR['lib'] = { title: r.title, artist: r.artist, bpm: r.bpm || 120, time: '−' + r.dur, ini: r.title.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase(), pos: 0, labelBg: key === 'a' ? '#3A2C1E' : '#1B3432' }; this.setState(x => ({ lib: false, [key]: Object.assign({}, x[key], { track: 'lib', playing: false }) })); };
+        return { title: r.title, artist: r.artist, dur: r.dur, bpm: r.bpm || '…', cover: r.cover, badgeBg: match ? 'var(--a,#FFB547)' : 'var(--booth,#1C1726)', badgeBorder: match ? 'var(--a,#FFB547)' : 'var(--line,#3E3550)', badgeFg: match ? 'var(--booth,#1C1726)' : (r.bpm ? 'var(--text,#F4EFF9)' : 'var(--muted,#A89EB8)'), ini: r.title.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase(), match, onA: load('a'), onB: load('b') };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

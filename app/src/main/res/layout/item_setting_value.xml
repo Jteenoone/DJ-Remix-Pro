@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Settings value row (App:203-206): min 52, padding 6 0, bottom line; label 14/20 · value 14 muted · chevron 16. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sel_row_line"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/row_settings_min_height"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/space_6"
+    android:paddingBottom="@dimen/space_6">
+
+    <TextView
+        android:id="@+id/text_label"
+        android:textAlignment="viewStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.MixDeck.Body"
+        tools:text="Độ trễ âm thanh" />
+
+    <TextView
+        android:id="@+id/text_value"
+        android:textDirection="ltr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MixDeck.Body.Muted"
+        tools:text="40 ms" />
+
+    <ImageView
+        android:layout_width="@dimen/icon_16"
+        android:layout_height="@dimen/icon_16"
+        android:layout_marginStart="@dimen/space_12"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_chevron_right"
+        app:tint="@color/md_muted" />
+</LinearLayout>

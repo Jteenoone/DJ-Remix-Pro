@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- source: App.dc.html:131 (Tuỳ chọn bản ghi). White glyph: tint with app:tint / imageTintList. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M10.2,5.5a1.8,1.8 0 1,0 3.6,0a1.8,1.8 0 1,0 -3.6,0z"
+        android:fillColor="#FFFFFFFF" />
+    <path
+        android:pathData="M10.2,12a1.8,1.8 0 1,0 3.6,0a1.8,1.8 0 1,0 -3.6,0z"
+        android:fillColor="#FFFFFFFF" />
+    <path
+        android:pathData="M10.2,18.5a1.8,1.8 0 1,0 3.6,0a1.8,1.8 0 1,0 -3.6,0z"
+        android:fillColor="#FFFFFFFF" />
+</vector>

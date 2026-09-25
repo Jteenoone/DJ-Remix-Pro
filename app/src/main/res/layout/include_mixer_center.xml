@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Mixer column (Mixer:171-214): panel r12 padding 8. Grid columns 44 · 22 · 8 · 1fr · 8 · 22 · 44 (gap 4),
+  rows 4 x 44 (gap 6) = 194: knobs A · volume A · VU A · labels · VU B · volume B · knobs B.
+  Below: "Crossfader" + row 44 (A · crossfader · B). Always ltr.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/bg_panel_r12"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    android:padding="@dimen/space_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="194dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/knob_size"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_a_high"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                app:mdBandLabel="@string/mixer_eq_high"
+                app:mdDeck="a" />
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_a_mid"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                app:mdBandLabel="@string/mixer_eq_mid"
+                app:mdDeck="a" />
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_a_low"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                app:mdBandLabel="@string/mixer_eq_low"
+                app:mdDeck="a" />
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_a_filter"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                app:mdBandLabel="@string/mixer_eq_filter"
+                app:mdDeck="a" />
+        </LinearLayout>
+
+        <com.example.djremixpro.core.ui.widget.VerticalFaderView
+            android:id="@+id/fader_volume_a"
+            android:layout_width="@dimen/fader_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_4"
+            app:mdDeck="a"
+            app:mdFaderStyle="volume" />
+
+        <com.example.djremixpro.core.ui.widget.VuMeterView
+            android:id="@+id/vu_a"
+            android:layout_width="@dimen/vu_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_4"
+            app:mdDeck="a"
+            app:mdVuPeriodMs="900"
+            app:mdVuPhaseMs="0" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_4"
+            android:layout_weight="1"
+            android:importantForAccessibility="noHideDescendants"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/knob_size"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/mixer_eq_high"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/mixer_eq_mid"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/mixer_eq_low"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/mixer_eq_filter"
+                android:textAppearance="@style/TextAppearance.MixDeck.Caption" />
+        </LinearLayout>
+
+        <com.example.djremixpro.core.ui.widget.VuMeterView
+            android:id="@+id/vu_b"
+            android:layout_width="@dimen/vu_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_4"
+            app:mdDeck="b"
+            app:mdVuPeriodMs="1070"
+            app:mdVuPhaseMs="-300" />
+
+        <com.example.djremixpro.core.ui.widget.VerticalFaderView
+            android:id="@+id/fader_volume_b"
+            android:layout_width="@dimen/fader_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_4"
+            app:mdDeck="b"
+            app:mdFaderStyle="volume" />
+
+        <LinearLayout
+            android:layout_width="@dimen/knob_size"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_4"
+            android:orientation="vertical">
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_b_high"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                app:mdBandLabel="@string/mixer_eq_high"
+                app:mdDeck="b" />
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_b_mid"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                app:mdBandLabel="@string/mixer_eq_mid"
+                app:mdDeck="b" />
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_b_low"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                app:mdBandLabel="@string/mixer_eq_low"
+                app:mdDeck="b" />
+
+            <com.example.djremixpro.core.ui.widget.KnobView
+                android:id="@+id/knob_b_filter"
+                android:layout_width="@dimen/knob_size"
+                android:layout_height="@dimen/knob_size"
+                android:layout_marginTop="@dimen/space_6"
+                app:mdBandLabel="@string/mixer_eq_filter"
+                app:mdDeck="b" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="@dimen/space_6" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:importantForAccessibility="no"
+        android:text="@string/mixer_crossfader"
+        android:textAppearance="@style/TextAppearance.MixDeck.Caption"
+        app:lineHeight="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/crossfader_height"
+        android:layout_marginTop="@dimen/space_2"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="14dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:text="@string/deck_letter_a"
+            android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Bold"
+            android:textColor="@color/md_deck_a" />
+
+        <com.example.djremixpro.core.ui.widget.CrossfaderView
+            android:id="@+id/crossfader"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_6"
+            android:layout_marginEnd="@dimen/space_6"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="14dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:text="@string/deck_letter_b"
+            android:textAppearance="@style/TextAppearance.MixDeck.Numeric.Bold"
+            android:textColor="@color/md_deck_b" />
+    </LinearLayout>
+</LinearLayout>

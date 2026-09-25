@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Library chip (App:104): 32 tall visual inside a 44dp touch target; selected = text, otherwise panel. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <inset android:insetTop="6dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <solid android:color="@color/md_text" />
+                <corners android:radius="@dimen/radius_16" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:insetTop="6dp" android:insetBottom="6dp">
+            <ripple android:color="@color/md_raised">
+                <item>
+                    <shape android:shape="rectangle">
+                        <solid android:color="@color/md_panel" />
+                        <corners android:radius="@dimen/radius_16" />
+                    </shape>
+                </item>
+            </ripple>
+        </inset>
+    </item>
+</selector>

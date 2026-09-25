@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- UI copy (Vietnamese, default locale). Source text: design/source/*.dc.html. Owner: lead.
+     Mock content (song titles, glossary, tips, lessons) lives in the fake repositories, not here. -->
+<resources>
+    <string name="app_name">DJ Remix Pro</string>
+    <string name="brand_name">MixDeck</string>
+
+    <!-- Common -->
+    <string name="action_back">Quay lại</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_next">Tiếp</string>
+    <string name="action_skip">Bỏ qua</string>
+    <string name="action_cancel">Huỷ</string>
+    <string name="action_save">Lưu</string>
+    <string name="action_see_all">Xem tất cả</string>
+    <string name="action_open_mixer">Vào bàn DJ</string>
+    <string name="action_listen">Nghe</string>
+    <string name="action_share">Chia sẻ</string>
+    <string name="bpm_unit">BPM</string>
+    <string name="bpm_unknown">…</string>
+    <string name="deck_letter_a">A</string>
+    <string name="deck_letter_b">B</string>
+    <string name="deck_name">Deck %1$s</string>
+    <string name="badge_new">Mới</string>
+    <string name="separator_dot">" · "</string>
+
+    <!-- Bottom navigation / titles -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_library">Thư viện</string>
+    <string name="nav_recordings">Bản ghi</string>
+    <string name="nav_learn">Học DJ</string>
+    <string name="title_home">MixDeck</string>
+    <string name="title_library">Thư viện</string>
+    <string name="title_recordings">Bản ghi của tôi</string>
+    <string name="title_learn">Học DJ</string>
+    <string name="title_settings">Cài đặt</string>
+    <string name="title_language">Ngôn ngữ</string>
+
+    <!-- Onboarding / permission (canvas #2d–#2h) -->
+    <string name="onboarding_1_title">Hai deck, một chiếc điện thoại</string>
+    <string name="onboarding_2_title">Chạm SYNC để hai bài chung nhịp</string>
+    <string name="onboarding_3_title">Ghi lại bản mix và gửi cho bạn bè</string>
+    <string name="onboarding_page_indicator">Trang %1$d/%2$d</string>
+    <string name="permission_title">Chọn nhạc từ máy của bạn</string>
+    <string name="permission_body">MixDeck cần quyền đọc nhạc trên máy để bạn chọn bài vào deck.</string>
+    <string name="permission_allow">Cho phép truy cập nhạc</string>
+    <string name="permission_use_samples">Dùng bài mẫu trước</string>
+
+    <!-- Home -->
+    <string name="home_ready_title">Sẵn sàng mix?</string>
+    <string name="home_samples_title">Thử mix với 2 bài mẫu</string>
+    <string name="home_samples_action">Mix với bài mẫu</string>
+    <string name="home_resume_title">Tiếp tục phiên trước</string>
+    <string name="home_learn_title">Học DJ</string>
+    <string name="home_recent_title">Bản mix gần đây</string>
+    <string name="home_ad_label">Quảng cáo</string>
+    <string name="home_ad_placeholder">Vị trí banner quảng cáo (320 × 50)</string>
+    <string name="learn_tile_guide">Hướng dẫn</string>
+    <string name="learn_tile_terms">Thuật ngữ</string>
+    <string name="learn_tile_tips">Mẹo</string>
+
+    <!-- Library -->
+    <string name="library_search_hint">Tìm bài hát, nghệ sĩ</string>
+    <string name="library_tab_songs">Bài hát</string>
+    <string name="library_tab_playlists">Playlist</string>
+    <string name="library_tab_albums">Album</string>
+    <string name="library_tab_artists">Nghệ sĩ</string>
+    <string name="library_tab_folders">Thư mục</string>
+    <plurals name="library_count">
+        <item quantity="other">%1$d bài</item>
+    </plurals>
+    <string name="library_sort">Sắp xếp: %1$s</string>
+    <string name="sort_title">Tên</string>
+    <string name="sort_artist">Nghệ sĩ</string>
+    <string name="sort_bpm">BPM</string>
+    <string name="sort_recent">Mới thêm</string>
+    <string name="library_empty_search">Không tìm thấy bài phù hợp.</string>
+    <string name="song_meta">%1$s · %2$s</string>
+    <string name="song_sheet_meta">%1$s · %2$s · %3$s</string>
+    <string name="song_bpm_value">%1$s BPM</string>
+    <string name="song_analyzing">Đang phân tích nhịp…</string>
+    <string name="sheet_load_deck_a">Nạp vào Deck A</string>
+    <string name="sheet_load_deck_b">Nạp vào Deck B</string>
+    <string name="sheet_preview">Nghe thử</string>
+    <string name="toast_loaded_deck">Đã nạp “%1$s” vào Deck %2$s</string>
+
+    <!-- Recordings -->
+    <string name="recordings_empty">Chưa có bản mix nào. Vào bàn DJ và bấm REC để ghi bản đầu tiên.</string>
+    <string name="recording_meta">%1$s · %2$s</string>
+    <string name="recording_meta_playing">%1$s · %2$s · Đang phát</string>
+    <string name="recording_listen_cd">Nghe %1$s</string>
+    <string name="recording_menu_cd">Tuỳ chọn bản ghi</string>
+    <string name="recording_pause_cd">Tạm dừng %1$s</string>
+    <string name="recording_cover_label">MIX</string>
+    <string name="recording_rename">Đổi tên</string>
+    <string name="recording_rename_title">Đổi tên bản mix</string>
+    <string name="recording_name_hint">Tên</string>
+    <string name="recording_delete">Xoá</string>
+    <string name="recording_delete_title">Xoá bản mix?</string>
+    <string name="recording_delete_body">“%1$s” sẽ bị xoá khỏi máy.</string>
+    <string name="toast_recording_deleted">Đã xoá bản mix</string>
+    <string name="toast_recording_renamed">Đã đổi tên bản mix</string>
+    <string name="toast_share_unavailable">Chia sẻ chưa khả dụng trong bản mock</string>
+    <string name="toast_recording_saved">Đã lưu bản mix</string>
+
+    <!-- Mini player -->
+    <string name="player_pause">Tạm dừng</string>
+    <string name="player_play">Phát</string>
+    <string name="player_time">%1$s / %2$s</string>
+
+    <!-- Learn -->
+    <string name="learn_seg_guide">Hướng dẫn</string>
+    <string name="learn_seg_terms">Thuật ngữ</string>
+    <string name="learn_seg_tips">Mẹo</string>
+    <string name="learn_progress">Đã học %1$d/%2$d bài · mỗi bài mở bàn DJ và chỉ từng nút</string>
+    <string name="learn_steps">%1$d bước</string>
+    <string name="learn_start">Bắt đầu</string>
+    <string name="learn_terms_search_hint">Tìm thuật ngữ</string>
+    <string name="learn_see_on_mixer">Xem trên mixer</string>
+    <string name="learn_terms_empty">Không tìm thấy thuật ngữ phù hợp.</string>
+
+    <!-- Settings -->
+    <string name="settings_appearance">Giao diện</string>
+    <string name="theme_dark">Tối</string>
+    <string name="theme_light">Sáng</string>
+    <string name="theme_system">Theo hệ thống</string>
+    <string name="settings_group_audio">Âm thanh</string>
+    <string name="settings_group_recording">Ghi âm</string>
+    <string name="settings_group_mixer">Mixer</string>
+    <string name="settings_group_general">Chung</string>
+    <string name="settings_latency">Độ trễ âm thanh</string>
+    <string name="settings_latency_value">%1$d ms</string>
+    <string name="settings_precue">Nghe trước qua tai nghe (pre-cue)</string>
+    <string name="settings_precue_sub">Cần tai nghe tách kênh</string>
+    <string name="settings_master_volume">Âm lượng tổng mặc định</string>
+    <string name="settings_percent_value">%1$d%%</string>
+    <string name="settings_format">Định dạng mặc định</string>
+    <string name="settings_quality">Chất lượng</string>
+    <string name="settings_quality_value">%1$d kbps</string>
+    <string name="settings_folder">Thư mục lưu</string>
+    <string name="settings_pitch_range">Phạm vi Pitch mặc định</string>
+    <string name="settings_pitch_range_value">±%1$d%%</string>
+    <string name="settings_jog_mode">Chế độ jog wheel mặc định</string>
+    <string name="settings_haptic">Rung phản hồi</string>
+    <string name="settings_keep_awake">Giữ màn hình luôn sáng</string>
+    <string name="settings_language">Ngôn ngữ</string>
+    <string name="settings_permissions">Quyền truy cập</string>
+    <string name="settings_support">Liên hệ hỗ trợ</string>
+    <string name="format_mp3">MP3</string>
+    <string name="format_wav">WAV</string>
+    <string name="jog_mode_jog">Đĩa</string>
+    <string name="jog_mode_pad">Pad</string>
+    <string name="toast_support_unavailable">Kênh hỗ trợ chưa khả dụng trong bản mock</string>
+    <string name="toast_folder_fixed">Thư mục lưu cố định: %1$s</string>
+
+    <!-- Language -->
+    <string name="language_search_hint">Tìm ngôn ngữ</string>
+    <string name="toast_language_selected">Đã chọn %1$s</string>
+
+    <!-- Toast default -->
+    <string name="toast_generic_error">Đã có lỗi xảy ra</string>
+
+    <!-- Mixer -->
+    <string name="mixer_rec">REC</string>
+    <string name="mixer_recording">Đang ghi bản mix</string>
+    <string name="mixer_rec_start_cd">Ghi bản mix</string>
+    <string name="mixer_rec_stop_cd">Dừng ghi bản mix</string>
+    <string name="mixer_quick_settings_cd">Cài đặt nhanh</string>
+    <string name="mixer_deck_empty_lane">Deck %1$s chưa có bài</string>
+    <string name="mixer_deck_empty_title">Chưa có bài</string>
+    <string name="mixer_deck_empty_sub">Chạm đĩa để chọn</string>
+    <string name="mixer_jog_empty">Chạm để chọn bài</string>
+    <string name="mixer_bpm_empty">—</string>
+    <string name="mixer_time_empty">−−:−−</string>
+    <string name="mixer_pitch">Pitch</string>
+    <string name="mixer_mode_jog">Đĩa</string>
+    <string name="mixer_mode_pad">Pad</string>
+    <string name="mixer_mode_jog_cd">Về chế độ đĩa</string>
+    <string name="mixer_scratch">Scratch</string>
+    <string name="mixer_scratch_cd">Chế độ đĩa (scratch)</string>
+    <string name="mixer_cue">Cue</string>
+    <string name="mixer_sync">Sync</string>
+    <string name="mixer_tab_cue">Cue</string>
+    <string name="mixer_tab_loop">Loop</string>
+    <string name="mixer_tab_fx">FX</string>
+    <string name="mixer_tab_sampler">Sampler</string>
+    <string name="mixer_pad_empty">Trống</string>
+    <string name="mixer_pad_beat">beat</string>
+    <string name="mixer_eq_high">High</string>
+    <string name="mixer_eq_mid">Mid</string>
+    <string name="mixer_eq_low">Low</string>
+    <string name="mixer_eq_filter">Filter</string>
+    <string name="mixer_eq_kill">Kill</string>
+    <string name="mixer_crossfader">Crossfader</string>
+    <string name="mixer_play_cd">Phát Deck %1$s</string>
+    <string name="mixer_pause_cd">Tạm dừng Deck %1$s</string>
+    <string name="mixer_jog_cd">Jog wheel Deck %1$s</string>
+    <string name="mixer_jog_empty_cd">Deck %1$s trống, chạm để chọn bài</string>
+    <string name="mixer_pitch_cd">Pitch Deck %1$s, %2$s%%</string>
+    <string name="mixer_volume_cd">Âm lượng Deck %1$s, %2$d%%</string>
+    <string name="mixer_eq_cd">EQ %1$s Deck %2$s, %3$s</string>
+    <string name="mixer_crossfader_cd">Crossfader, %1$d%% về phía B</string>
+    <string name="mixer_overview_cd">Tổng quan bài Deck %1$s</string>
+    <string name="mixer_overload">Âm lượng đang quá tải. Hạ fader hoặc âm lượng tổng.</string>
+    <string name="mixer_bpm_match">Hợp nhịp Deck A</string>
+    <string name="mixer_bpm_match_short">Hợp nhịp A</string>
+
+    <!-- Mixer library panel -->
+    <string name="mixer_library_title">Chọn bài cho Deck %1$s</string>
+    <string name="mixer_library_close_cd">Đóng thư viện</string>
+    <string name="mixer_load_a_cd">Nạp vào Deck A</string>
+    <string name="mixer_load_b_cd">Nạp vào Deck B</string>
+
+    <!-- Mixer FX sheet -->
+    <string name="fx_toggle_cd">Bật %1$s</string>
+    <string name="fx_wet_dry">Wet/Dry</string>
+    <string name="fx_wet_dry_cd">Wet/Dry %1$s, %2$d%%</string>
+    <string name="fx_beat_length">Độ dài theo beat</string>
+    <string name="fx_reset">Đặt lại</string>
+    <string name="fx_drag_hint">Kéo để chỉnh</string>
+    <string name="fx_readout">%1$s beat · %2$d%%</string>
+    <string name="fx_axis_amount">↑ Độ mạnh</string>
+    <string name="fx_axis_time">Thời gian →</string>
+    <string name="fx_xy_cd">XY pad %1$s</string>
+
+    <!-- Mixer save dialog -->
+    <string name="save_title">Lưu bản mix</string>
+    <string name="save_name_label">Tên</string>
+    <string name="save_format_label">Định dạng</string>
+    <string name="save_quality_label">Chất lượng</string>
+    <string name="save_wav_note">WAV không nén, tệp lớn hơn MP3 khoảng 4 lần.</string>
+    <string name="save_discard">Bỏ</string>
+    <string name="save_confirm">Lưu bản mix</string>
+    <string name="save_default_name">Mix %1$s</string>
+
+    <!-- Mixer coach (lesson "Dùng Sync") -->
+    <string name="coach_step">Bước %1$d/%2$d</string>
+    <string name="coach_sync_todo_title">Chạm Sync ở Deck B</string>
+    <string name="coach_sync_todo_body">Sync chỉnh tốc độ Deck B cho khớp nhịp Deck A đang phát.</string>
+    <string name="coach_sync_done_title">Hai bài đã chung nhịp</string>
+    <string name="coach_sync_done_body">BPM Deck B giờ bằng Deck A. Tiếp theo: bấm Play ở Deck B.</string>
+</resources>

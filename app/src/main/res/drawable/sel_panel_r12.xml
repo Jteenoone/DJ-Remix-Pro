@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pressed state replaces the web hover (background raised). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/md_raised">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_panel" />
+            <corners android:radius="@dimen/radius_12" />
+        </shape>
+    </item>
+</ripple>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S9 Language (App:214-224): search + 17 rows with radio. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_booth"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height"
+        android:layout_marginStart="@dimen/screen_padding_h"
+        android:layout_marginTop="@dimen/space_4"
+        android:layout_marginEnd="@dimen/screen_padding_h"
+        android:background="@drawable/bg_search"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/space_12"
+        android:paddingEnd="@dimen/space_12">
+
+        <ImageView
+            android:layout_width="@dimen/icon_18"
+            android:layout_height="@dimen/icon_18"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_search"
+            app:tint="@color/md_muted" />
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/language_search_hint"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.MixDeck.Body"
+            android:textColorHint="@color/md_muted" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_languages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/screen_padding_h"
+        android:paddingEnd="@dimen/screen_padding_h"
+        android:paddingBottom="@dimen/space_24"
+        android:scrollbars="none"
+        tools:listitem="@layout/item_language" />
+</LinearLayout>

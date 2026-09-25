@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid circle in text colour: mini player stop button (App:230), playing row button (App:88). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/md_line2">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/md_text" />
+        </shape>
+    </item>
+</ripple>
